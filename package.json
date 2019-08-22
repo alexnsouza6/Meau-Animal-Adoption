@@ -7,11 +7,11 @@
     "test": "jest",
     "lint": "eslint .",
     "precommit": "lint-staged",
-    "prettier": "prettier 'app/**/*.js'"
+    "prettier": "prettier --write 'app/**/*.js'"
   },
   "lint-staged": {
     "*.js": [
-      "npm run prettier",
+      "npm run lint",
       "git add"
     ]
   },
