@@ -39,7 +39,7 @@ That's all! 😎
 
 ### Obs on Installation
 
-To all the plugins work properly, you must install ESlint plugin: `npm install --save-dev eslint` and add the following lines in your user settings on VScode:
+In order to make the plugins work properly, you must install ESlint plugin: `npm install --save-dev eslint` and add the following lines in your user settings on VScode:
 
 ```
 /* ESLint */
