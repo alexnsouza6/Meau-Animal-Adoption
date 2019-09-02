@@ -47,7 +47,9 @@
     "react-native/no-color-literals": "off",
     "react-native/sort-styles": "off",
     "global-require": "off",
-    "react-native/no-raw-text": "off"
+    "react-native/no-raw-text": "off",
+    "react/state-in-constructor": "off",
+    "no-shadow": "off"
   },
   "settings": {
     "import/resolver": {
