@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "821505612282",
+    "firebase_url": "https://meau-app-8f1b1.firebaseio.com",
+    "project_id": "meau-app-8f1b1",
+    "storage_bucket": "meau-app-8f1b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:821505612282:android:867f4e9c3d67bde9",
+        "android_client_info": {
+          "package_name": "org.reactjs.native.example.MeauAdoption"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "821505612282-9qgadrsvbv8pqivpv8idur6mqkdmft8t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADJNH1qEnlUN7Vtd52zXyElMRmFtQkzGA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "821505612282-9qgadrsvbv8pqivpv8idur6mqkdmft8t.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "821505612282-eve3cg7iv8f0t23pkrg7d9mvbofosbhh.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.MeauAdoption"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

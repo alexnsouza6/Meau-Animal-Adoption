@@ -27,6 +27,14 @@ target 'MeauAdoption' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
+  # add the Firebase pod for Google Analytics
+  pod 'Firebase/Analytics'
+  # add pods for any other desired Firebase products
+  # https://firebase.google.com/docs/ios/setup#available-pods
+  pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app/ios'
+  pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth/ios'
+
+
   target 'MeauAdoptionTests' do
     inherit! :search_paths
     # Pods for testing
