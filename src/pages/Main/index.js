@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Text } from 'react-native';
 
-import firebase from '@react-native-firebase/app';
+import firebase from '../../config/firebase';
 import { Container } from './style';
 
 import '@react-native-firebase/auth';

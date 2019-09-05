@@ -3,7 +3,7 @@ import {
   Text, Button,
 } from 'react-native';
 import PropTypes from 'prop-types';
-import firebase from '@react-native-firebase/app';
+import firebase from '../../config/firebase';
 import '@react-native-firebase/auth';
 import { Container, SignUpText, ErrorText } from './style';
 
