@@ -1,12 +1,14 @@
 import React from 'react';
 
-import { Button } from 'react-native';
 import {
-  Container, Title, Description, DescriptionContainer, MenuButton, Menu,
+  Container, Title, Description,
+  DescriptionContainer, MenuButton,
+  Menu, MenuText, Logo, LoginButton,
 } from './style';
 
-
 import '@react-native-firebase/auth';
+
+const meauImage = require('../../assets/images/Meau_marca_2.png');
 
 const Main = () => (
   <Container>
@@ -17,11 +19,24 @@ const Main = () => (
       <Description>Qual o seu interesse?</Description>
     </DescriptionContainer>
     <Menu>
-      <MenuButton> ADOTAR </MenuButton>
-      <MenuButton> AJUDAR </MenuButton>
-      <MenuButton> CADASTRAR ANIMAL</MenuButton>
+      <MenuButton>
+        <MenuText>
+          ADOTAR
+        </MenuText>
+      </MenuButton>
+      <MenuButton>
+        <MenuText>
+          AJUDAR
+        </MenuText>
+      </MenuButton>
+      <MenuButton>
+        <MenuText>
+          CADASTRAR ANIMAL
+        </MenuText>
+      </MenuButton>
     </Menu>
-    <Button title="login" />
+    <LoginButton title="login" />
+    <Logo source={meauImage} />
   </Container>
 );
 

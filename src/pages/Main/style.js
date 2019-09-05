@@ -3,7 +3,7 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const Container = styled.View`
     flex: 1;
-    justifyContent: center;
+    justifyContent: space-evenly;
     alignItems: center;
 `;
 
@@ -14,28 +14,48 @@ export const DescriptionContainer = styled.View`
 `;
 
 export const Menu = styled.View`
-    justifyContent: space-evenly;
+    justifyContent: space-between;
     flex-direction: column;
     alignItems: center;
 `;
 
 export const Title = styled.Text`
-    font-size: 72px;
+    fontSize: 72px;
     color: #ffd358;
-    font-family: Courgette;
-    padding-top: ${getStatusBarHeight() + 56}px;
-    padding-bottom: 52px;
+    fontFamily: Courgette;
+    paddingTop: ${getStatusBarHeight() + 56}px;
+    paddingBottom: 52px;
 `;
 
 export const Description = styled.Text`
-    font-size: 16px;
-    font-family: Roboto;
+    fontSize: 18px;
+    fontFamily: Roboto;
     color: #757575;
-    text-align: center;
+    textAlign: center;
 `;
 
-export const MenuButton = styled.Text`
+export const MenuButton = styled.TouchableOpacity`
     width: 232px;
     height: 40px;
-    background-color: #ffd358;
+    marginBottom: 12px;
+    justifyContent: center;
+    backgroundColor: #ffd358;
+`;
+
+export const MenuText = styled.Text`
+    textAlign: center;
+    fontSize: 16px;
+    color: #434343;
+    fontFamily: Roboto;
+`;
+
+export const Logo = styled.Image`
+    width: 120px;
+    height: 44px;
+`;
+
+export const LoginButton = styled.Button`
+    fontSize: 16px;
+    color: #88C9BF;
+    fontFamily: Roboto;
 `;
