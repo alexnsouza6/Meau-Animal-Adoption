@@ -7,7 +7,6 @@ import '@react-native-firebase/auth';
 
 import { Spinner } from './style';
 
-
 export default class Loading extends Component {
   componentDidMount() {
     const { navigation } = this.props;
@@ -27,5 +26,7 @@ export default class Loading extends Component {
 }
 
 Loading.propTypes = {
-  navigation: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };

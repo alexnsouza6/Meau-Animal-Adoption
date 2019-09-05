@@ -7,7 +7,7 @@ import { LoginContainer, LoginText, ErrorText } from './style';
 import '@react-native-firebase/auth';
 
 export default class Login extends React.Component {
-  state = { email: '', password: '', errorMessage: null }
+  state = { email: '', password: '', errorMessage: null };
 
   handleLogin = () => {
     const { email, password } = this.state;
@@ -17,7 +17,7 @@ export default class Login extends React.Component {
       .signInWithEmailAndPassword(email, password)
       .then(() => navigation.navigate('Main'))
       .catch((error) => this.setState({ errorMessage: error.message }));
-  }
+  };
 
   render() {
     const { email, password, errorMessage } = this.state;
@@ -25,12 +25,7 @@ export default class Login extends React.Component {
     return (
       <LoginContainer>
         <Text>Login</Text>
-        {errorMessage
-          && (
-          <ErrorText>
-            {errorMessage}
-          </ErrorText>
-          )}
+        {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
         <LoginText
           autoCapitalize="none"
           placeholder="Email"
@@ -54,7 +49,8 @@ export default class Login extends React.Component {
   }
 }
 
-
 Login.propTypes = {
-  navigation: PropTypes.func.isRequired,
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
