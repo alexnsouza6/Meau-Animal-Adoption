@@ -5,11 +5,9 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* MeauAdoptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MeauAdoptionTests.m */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
-		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		176803EC5A51B3ED78CC69FE /* libPods-MeauAdoption-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC361DC40520CA941B5B2C4C /* libPods-MeauAdoption-tvOSTests.a */; };
@@ -17,11 +15,13 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* MeauAdoptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MeauAdoptionTests.m */; };
+		583519A42320BAC300419493 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		58A9CF74231F5D2F006DC5B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58A9CF73231F5D2E006DC5B6 /* GoogleService-Info.plist */; };
-		58B76753231F6B2500DFE191 /* Iphone_XR.png in Resources */ = {isa = PBXBuildFile; fileRef = 58B76752231F6B2500DFE191 /* Iphone_XR.png */; };
 		702D01864D701F4C1E4F3698 /* libPods-MeauAdoption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED36914E54E370B95C535B0A /* libPods-MeauAdoption.a */; };
 		C3A754C782F35A659397657A /* libPods-MeauAdoption-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2F9261E3FDFE5D32A1F35D0B /* libPods-MeauAdoption-tvOS.a */; };
 		C6EEC4A9856760CDD8130A3A /* libPods-MeauAdoptionTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4772AEDD09897F43E1F1EE5A /* libPods-MeauAdoptionTests.a */; };
+		765C09940BEE4AD98FD4E293 /* Courgette-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9478FD59A68B497FB72353DE /* Courgette-Regular.ttf */; };
+		8BBB101E35464ED9A662AAFF /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A797111F04C64EA6AA3B8C31 /* Roboto-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,6 @@
 		3EEB86C72F099B9A26DF2CA7 /* Pods-MeauAdoption-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeauAdoption-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MeauAdoption-tvOS/Pods-MeauAdoption-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4772AEDD09897F43E1F1EE5A /* libPods-MeauAdoptionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeauAdoptionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		58A9CF73231F5D2E006DC5B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
-		58B76752231F6B2500DFE191 /* Iphone_XR.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Iphone_XR.png; path = ../../../../Downloads/bundle/iOS/LaunchImage.launchimage/Iphone_XR.png; sourceTree = "<group>"; };
 		73E91112EA0EC0DD10254401 /* Pods-MeauAdoptionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeauAdoptionTests.debug.xcconfig"; path = "Target Support Files/Pods-MeauAdoptionTests/Pods-MeauAdoptionTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7BC30B95668CC48F7537B359 /* Pods-MeauAdoption-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeauAdoption-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-MeauAdoption-tvOSTests/Pods-MeauAdoption-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		945B547CF101F6C15552EC16 /* Pods-MeauAdoption-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeauAdoption-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MeauAdoption-tvOSTests/Pods-MeauAdoption-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -71,6 +70,8 @@
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
 		ED36914E54E370B95C535B0A /* libPods-MeauAdoption.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeauAdoption.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F325A47F88337042DC2E5474 /* Pods-MeauAdoption-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeauAdoption-tvOS.release.xcconfig"; path = "Target Support Files/Pods-MeauAdoption-tvOS/Pods-MeauAdoption-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		9478FD59A68B497FB72353DE /* Courgette-Regular.ttf */ = {isa = PBXFileReference; name = "Courgette-Regular.ttf"; path = "../src/assets/fonts/Courgette-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A797111F04C64EA6AA3B8C31 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; name = "Roboto-Regular.ttf"; path = "../src/assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,13 +180,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				58B76752231F6B2500DFE191 /* Iphone_XR.png */,
 				13B07FAE1A68108700A75B9A /* MeauAdoption */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* MeauAdoptionTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				3071EB58959C24D1972A81AF /* Pods */,
+				D169FFEF2B9048D38BFE1BC6 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -202,6 +203,16 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		D169FFEF2B9048D38BFE1BC6 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				9478FD59A68B497FB72353DE /* Courgette-Regular.ttf */,
+				A797111F04C64EA6AA3B8C31 /* Roboto-Regular.ttf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -290,7 +301,7 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0940;
+				LastUpgradeCheck = 940;
 				ORGANIZATIONNAME = Facebook;
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
@@ -342,10 +353,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				58B76753231F6B2500DFE191 /* Iphone_XR.png in Resources */,
+				583519A42320BAC300419493 /* LaunchScreen.xib in Resources */,
 				58A9CF74231F5D2F006DC5B6 /* GoogleService-Info.plist in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				765C09940BEE4AD98FD4E293 /* Courgette-Regular.ttf in Resources */,
+				8BBB101E35464ED9A662AAFF /* Roboto-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -634,7 +646,6 @@
 			baseConfigurationReference = B18CFA8AECC1BA79F5B38A39 /* Pods-MeauAdoption.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				INFOPLIST_FILE = MeauAdoption/Info.plist;
@@ -655,7 +666,6 @@
 			baseConfigurationReference = 1A6DE2BCA7E049E3CA2F2B54 /* Pods-MeauAdoption.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CURRENT_PROJECT_VERSION = 1;
 				INFOPLIST_FILE = MeauAdoption/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

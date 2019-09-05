@@ -1,33 +1,28 @@
 import React from 'react';
-import { Button, Text } from 'react-native';
 
-import firebase from '../../config/firebase';
-import { Container } from './style';
+import { Button } from 'react-native';
+import {
+  Container, Title, Description, DescriptionContainer, MenuButton, Menu,
+} from './style';
+
 
 import '@react-native-firebase/auth';
 
-export default class Main extends React.Component {
-  state = { currentUser: null }
+const Main = () => (
+  <Container>
+    <Title> Olá! </Title>
+    <DescriptionContainer>
+      <Description>Bem vindo ao Meau!</Description>
+      <Description>Aqui você pode adotar, doar e ajudar cães e gatos com facilidade.</Description>
+      <Description>Qual o seu interesse?</Description>
+    </DescriptionContainer>
+    <Menu>
+      <MenuButton> ADOTAR </MenuButton>
+      <MenuButton> AJUDAR </MenuButton>
+      <MenuButton> CADASTRAR ANIMAL</MenuButton>
+    </Menu>
+    <Button title="login" />
+  </Container>
+);
 
-  componentDidMount() {
-    const { currentUser } = firebase.auth();
-    this.setState({ currentUser });
-  }
-
-  render() {
-    const { currentUser } = this.state;
-    return (
-      <Container>
-        <Text>
-            Hi {currentUser && currentUser.email}!
-        </Text>
-        { currentUser && (
-        <Button
-          title="Sign out"
-          onPress={() => firebase.auth().signOut()}
-        />
-        ) }
-      </Container>
-    );
-  }
-}
+export default Main;
