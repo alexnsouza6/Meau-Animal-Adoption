@@ -35,7 +35,7 @@ const Main = () => (
         </MenuText>
       </MenuButton>
     </Menu>
-    <LoginButton title="login" />
+    <LoginButton />
     <Logo source={meauImage} />
   </Container>
 );

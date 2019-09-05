@@ -54,8 +54,10 @@ export const Logo = styled.Image`
     height: 44px;
 `;
 
-export const LoginButton = styled.Button`
+export const LoginButton = styled.Button.attrs({
+  title: 'login',
+  color: '#88C9BF',
+})`
     fontSize: 16px;
-    color: #88C9BF;
     fontFamily: Roboto;
 `;
