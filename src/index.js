@@ -1,9 +1,12 @@
 import React from 'react';
 import { StatusBar } from 'react-native';
 
-import './config/ReactotronConfig';
-
 import Routes from './routes';
+
+
+if (__DEV__) {
+  import('../ReactotronConfig');
+}
 
 const App = () => (
   <>

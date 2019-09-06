@@ -6,8 +6,6 @@ import {
   Menu, MenuText, Logo, LoginButton,
 } from './style';
 
-import '@react-native-firebase/auth';
-
 const meauImage = require('../../assets/images/Meau_marca_2.png');
 
 const Main = () => (
@@ -35,7 +33,7 @@ const Main = () => (
         </MenuText>
       </MenuButton>
     </Menu>
-    <LoginButton />
+    <LoginButton onPress={() => {}} />
     <Logo source={meauImage} />
   </Container>
 );

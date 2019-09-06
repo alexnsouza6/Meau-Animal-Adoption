@@ -13,7 +13,7 @@ const Routes = createAppContainer(createSwitchNavigator(
     Main,
   },
   {
-    initialRouteName: 'Loading',
+    initialRouteName: 'Main',
   },
 ));
 
