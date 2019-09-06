@@ -12,8 +12,12 @@
 #import <React/RCTRootView.h>
 #import <Firebase.h>
 
+
+#import <FBSDKCoreKit/FBSDKCoreKit.h>
+
 @import UIKit;
 @implementation AppDelegate
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -33,9 +37,27 @@
   /* Non-default lines must be added below */
   
   [FIRApp configure];
+
+  [[FBSDKApplicationDelegate sharedInstance] application:application
+  didFinishLaunchingWithOptions:launchOptions];
+  // Add any custom logic here.
   
   return YES;
 }
+
+- (BOOL)application:(UIApplication *)application 
+            openURL:(NSURL *)url 
+            options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
+
+  BOOL handled = [[FBSDKApplicationDelegate sharedInstance] application:application
+    openURL:url
+    sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey]
+    annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
+  ];
+  // Add any custom logic here.
+  return handled;
+}
+    
 
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {

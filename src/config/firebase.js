@@ -9,6 +9,9 @@ const firebaseConfig = {
   storageBucket: 'meau-app-8f1b1.appspot.com',
   messagingSenderId: '821505612282',
   appId: '1:821505612282:web:e3ea38dc9ee8ffec086c43',
+  facebook: {
+    appId: '3635034359855680',
+  },
 };
 
 export default !firebase.apps.length

@@ -1,10 +1,14 @@
 import React from 'react';
-import { Text, Button } from 'react-native';
+import { Text, Button, View } from 'react-native';
 import PropTypes from 'prop-types';
+import { LoginButton, AccessToken } from 'react-native-fbsdk';
+
+
 import firebase from '../../config/firebase';
 import { LoginContainer, LoginText, ErrorText } from './style';
 
 import '@react-native-firebase/auth';
+
 
 export default class Login extends React.Component {
   state = { email: '', password: '', errorMessage: null };
@@ -40,6 +44,22 @@ export default class Login extends React.Component {
           value={password}
         />
         <Button title="Login" onPress={this.handleLogin} />
+        <View>
+          <LoginButton
+            onLoginFinished={
+            (error, result) => {
+              if (!error && !result.isCancelled) {
+                AccessToken.getCurrentAccessToken().then(
+                  () => {
+                    navigation.navigate('Main');
+                  },
+                );
+              }
+            }
+          }
+            onLogoutFinished={() => console.log('logout.')}
+          />
+        </View>
         <Button
           title="Don't have an account? Sign Up"
           onPress={() => navigation.navigate('SignUp')}

@@ -34,6 +34,7 @@ target 'MeauAdoption' do
   pod 'RNFBApp', :path => '../node_modules/@react-native-firebase/app/ios'
   pod 'RNFBAuth', :path => '../node_modules/@react-native-firebase/auth/ios'
 
+  pod 'FBSDKLoginKit'
 
   target 'MeauAdoptionTests' do
     inherit! :search_paths

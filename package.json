@@ -27,6 +27,7 @@
     "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-native": "0.60.5",
+    "react-native-fbsdk": "^1.0.3",
     "react-native-gesture-handler": "^1.4.1",
     "react-native-iphone-x-helper": "^1.2.1",
     "react-navigation": "^4.0.0",

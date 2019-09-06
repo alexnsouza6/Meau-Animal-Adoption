@@ -1,5 +1,7 @@
 import React from 'react';
 
+import PropTypes from 'prop-types';
+
 import {
   Container, Title, Description,
   DescriptionContainer, MenuButton,
@@ -8,7 +10,7 @@ import {
 
 const meauImage = require('../../assets/images/Meau_marca_2.png');
 
-const Main = () => (
+const Main = ({ navigation }) => (
   <Container>
     <Title> Olá! </Title>
     <DescriptionContainer>
@@ -33,9 +35,16 @@ const Main = () => (
         </MenuText>
       </MenuButton>
     </Menu>
-    <LoginButton onPress={() => {}} />
+    <LoginButton onPress={() => { navigation.navigate('Login'); }} />
     <Logo source={meauImage} />
   </Container>
 );
+
+Main.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
 
 export default Main;
