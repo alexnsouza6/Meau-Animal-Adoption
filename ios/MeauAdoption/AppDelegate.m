@@ -14,6 +14,7 @@
 
 
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+#import <RNGoogleSignin/RNGoogleSignin.h>
 
 @import UIKit;
 @implementation AppDelegate
@@ -45,6 +46,7 @@
   return YES;
 }
 
+// FACEBOOK AMD GOOGLE SDK CONFIG
 - (BOOL)application:(UIApplication *)application 
             openURL:(NSURL *)url 
             options:(NSDictionary<UIApplicationOpenURLOptionsKey,id> *)options {
@@ -55,7 +57,8 @@
     annotation:options[UIApplicationOpenURLOptionsAnnotationKey]
   ];
   // Add any custom logic here.
-  return handled;
+    return [[FBSDKApplicationDelegate sharedInstance] application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]]
+         || [RNGoogleSignin application:application openURL:url sourceApplication:options[UIApplicationOpenURLOptionsSourceApplicationKey] annotation:options[UIApplicationOpenURLOptionsAnnotationKey]];
 }
     
 
