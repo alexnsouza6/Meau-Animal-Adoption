@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:821505612282:android:867f4e9c3d67bde9",
         "android_client_info": {
-          "package_name": "org.reactjs.native.example.MeauAdoption"
+          "package_name": "com.meauadoption"
         }
       },
       "oauth_client": [
