@@ -6,6 +6,7 @@ import {
   Container, Title, Description,
   DescriptionContainer, MenuButton,
   Menu, MenuText, Logo, LoginButton,
+  RegisterButton,
 } from './style';
 
 const meauImage = require('../../assets/images/Meau_marca_2.png');
@@ -36,6 +37,8 @@ const Main = ({ navigation }) => (
       </MenuButton>
     </Menu>
     <LoginButton onPress={() => { navigation.navigate('Login'); }} />
+    <RegisterButton onPress={() => { navigation.navigate('Register'); }} />
+
     <Logo source={meauImage} />
   </Container>
 );

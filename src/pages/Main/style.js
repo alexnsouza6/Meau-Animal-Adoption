@@ -61,3 +61,11 @@ export const LoginButton = styled.Button.attrs({
     fontSize: 16px;
     fontFamily: Roboto;
 `;
+
+export const RegisterButton = styled.Button.attrs({
+  title: 'Cadastrar Perfil',
+  color: '#88C9BF',
+})`
+      fontSize: 16px;
+      fontFamily: Roboto;
+  `;
