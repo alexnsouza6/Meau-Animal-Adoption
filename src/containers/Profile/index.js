@@ -61,4 +61,3 @@ Profile.propTypes = {
 };
 
 export default connect(mapStateToProps)(Profile);
-
