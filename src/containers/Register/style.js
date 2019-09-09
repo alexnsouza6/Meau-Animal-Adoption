@@ -60,15 +60,6 @@ export const RegisterButton = styled.Button.attrs({
       fontFamily: Roboto;
   `;
 
-export const RegisterText = styled.Text`
-    fontSize: 16px;
-    marginTop: 28;
-    marginBottom: 5;
-    fontFamily: Roboto;
-    textAlign: center;
-`;
-
-
 export const ErrorText = styled.Text`
     color: red;
 `;

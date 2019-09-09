@@ -1,50 +1,61 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+
 import {
-  StyleSheet, View, Text, Button,
-} from 'react-native';
+  Container, FieldText, MenuText,
+  InfoText, ScrollContainer, 
+  ButtonsView, NavButton
+} from './style';
+
 import { connect } from 'react-redux';
-
-
-const styles = StyleSheet.create({
-  baseText: {
-    fontFamily: 'Cochin',
-  },
-  placeButton: {
-    width: '30%',
-  },
-  container: {
-    paddingTop: 30,
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-  },
-  listContainer: {
-    width: '100%',
-  },
-});
 
 
 class Profile extends Component {
   render() {
     const { navigation } = this.props;
     return (
-      <View style={styles.container}>
-        <View style={styles.listContainer}>
-          <Text style={styles.baseText}>{ this.props.registration.full_name }</Text>
-          <Text style={styles.baseText}>{ this.props.registration.age }</Text>
-          <Text style={styles.baseText}>{ this.props.registration.email }</Text>
-          <Text style={styles.baseText}>{ this.props.registration.city_state }</Text>
-          <Text style={styles.baseText}>{ this.props.registration.city }</Text>
-          <Text style={styles.baseText}>{ this.props.registration.address }</Text>
-          <Text style={styles.baseText}>{ this.props.registration.phone }</Text>
-          <Text style={styles.baseText}>{ this.props.registration.username }</Text>
-          <Text style={styles.baseText}>{ this.props.registration.password }</Text>
-        </View>
-        <Button
-          title="Voltar"
-          style={styles.placeButton}
-          onPress={() => navigation.navigate('Main')}
-        />
-      </View>
+      <ScrollContainer>
+        <Container>
+          <InfoText>NOME COMPLETO</InfoText>
+          <FieldText>{ this.props.registration.full_name }</FieldText>
+          
+          <InfoText>IDADE</InfoText>          
+          <FieldText>{ this.props.registration.age }</FieldText>
+          
+          <InfoText>EMAIL</InfoText>          
+          <FieldText>{ this.props.registration.email }</FieldText>
+          
+          <InfoText>ESTADO</InfoText>          
+          <FieldText>{ this.props.registration.city_state }</FieldText>
+          
+          <InfoText>CIDADE</InfoText>                    
+          <FieldText>{ this.props.registration.city }</FieldText>
+          
+          <InfoText>ENDEREÇO</InfoText>                    
+          <FieldText>{ this.props.registration.address }</FieldText>
+          
+          <InfoText>TELEFONE</InfoText>                    
+          <FieldText>{ this.props.registration.phone }</FieldText>
+          
+          <InfoText>NOME DE USUÁRIO</InfoText>                    
+          <FieldText>{ this.props.registration.username }</FieldText>
+          
+          <ButtonsView>
+            <NavButton onPress={() => navigation.navigate('Main')}>
+              <MenuText>
+                PÁGINA PRINCIPAL
+              </MenuText>
+            </NavButton>
+            <NavButton onPress={() => navigation.navigate('Register')}>
+              <MenuText>
+                EDITAR PERFIL
+              </MenuText>
+            </NavButton>
+          </ButtonsView>
+        
+        </Container>
+    </ScrollContainer>
+    
     );
   }
 }
