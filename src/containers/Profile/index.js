@@ -72,14 +72,14 @@ Profile.propTypes = {
   }).isRequired,
   user: PropTypes.shape(
     {
-      fullName: PropTypes.string.isRequired,
-      age: PropTypes.string.isRequired,
-      email: PropTypes.string.isRequired,
-      cityState: PropTypes.string.isRequired,
-      city: PropTypes.string.isRequired,
-      address: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
-      username: PropTypes.string.isRequired,
+      fullName: PropTypes.string,
+      age: PropTypes.string,
+      email: PropTypes.string,
+      cityState: PropTypes.string,
+      city: PropTypes.string,
+      address: PropTypes.string,
+      phone: PropTypes.string,
+      username: PropTypes.string,
     },
   ).isRequired,
 };

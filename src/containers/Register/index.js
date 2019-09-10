@@ -22,7 +22,7 @@ class Register extends React.Component {
     password: '',
   }
 
-  handleuser = () => {
+  handleUser = () => {
     const { navigation, dispatch } = this.props;
     dispatch(addProfile(this.state));
     return (navigation.navigate('Profile'));
@@ -107,7 +107,7 @@ class Register extends React.Component {
             <Description>adicionar foto</Description>
           </ImageButton>
 
-          <RegisterButton onPress={this.handleRegistration} />
+          <RegisterButton onPress={this.handleUser} />
         </Container>
       </ScrollContainer>
     );
@@ -128,4 +128,4 @@ Register.propTypes = {
 };
 
 
-export default connect(mapStateToProps, { addProfile })(Register);
+export default connect(mapStateToProps)(Register);
