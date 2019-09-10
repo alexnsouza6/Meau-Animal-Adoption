@@ -24,8 +24,9 @@ class Register extends React.Component {
 
   handleUser = () => {
     const { navigation, dispatch } = this.props;
+
     dispatch(addProfile(this.state));
-    return (navigation.navigate('Profile'));
+    navigation.navigate('Profile');
   }
 
   render() {
