@@ -1,8 +1,8 @@
 import { createStore, combineReducers } from 'redux';
-import registerReducer from './reducers/index';
+import userReducer from './reducers/index';
 
 const rootReducer = combineReducers({
-  registration: registerReducer,
+  user: userReducer,
 });
 
 const configureStore = () => createStore(rootReducer);

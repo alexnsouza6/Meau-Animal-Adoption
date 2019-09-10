@@ -1,74 +1,87 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
+import { connect } from 'react-redux';
 import {
   Container, FieldText, MenuText,
-  InfoText, ScrollContainer, 
-  ButtonsView, NavButton
+  InfoText, ScrollContainer,
+  ButtonsView, NavButton,
 } from './style';
 
-import { connect } from 'react-redux';
 
+const Profile = ({ user, navigation }) => {
+  const {
+    fullName, age, email, cityState, city, address, phone, username,
+  } = user;
 
-class Profile extends Component {
-  render() {
-    const { navigation } = this.props;
-    return (
-      <ScrollContainer>
-        <Container>
-          <InfoText>NOME COMPLETO</InfoText>
-          <FieldText>{ this.props.registration.full_name }</FieldText>
-          
-          <InfoText>IDADE</InfoText>          
-          <FieldText>{ this.props.registration.age }</FieldText>
-          
-          <InfoText>EMAIL</InfoText>          
-          <FieldText>{ this.props.registration.email }</FieldText>
-          
-          <InfoText>ESTADO</InfoText>          
-          <FieldText>{ this.props.registration.city_state }</FieldText>
-          
-          <InfoText>CIDADE</InfoText>                    
-          <FieldText>{ this.props.registration.city }</FieldText>
-          
-          <InfoText>ENDEREÇO</InfoText>                    
-          <FieldText>{ this.props.registration.address }</FieldText>
-          
-          <InfoText>TELEFONE</InfoText>                    
-          <FieldText>{ this.props.registration.phone }</FieldText>
-          
-          <InfoText>NOME DE USUÁRIO</InfoText>                    
-          <FieldText>{ this.props.registration.username }</FieldText>
-          
-          <ButtonsView>
-            <NavButton onPress={() => navigation.navigate('Main')}>
-              <MenuText>
+  return (
+    <ScrollContainer>
+      <Container>
+        <InfoText>NOME COMPLETO</InfoText>
+        <FieldText>{ fullName }</FieldText>
+
+        <InfoText>IDADE</InfoText>
+        <FieldText>{ age }</FieldText>
+
+        <InfoText>EMAIL</InfoText>
+        <FieldText>{ email }</FieldText>
+
+        <InfoText>ESTADO</InfoText>
+        <FieldText>{ cityState }</FieldText>
+
+        <InfoText>CIDADE</InfoText>
+        <FieldText>{ city }</FieldText>
+
+        <InfoText>ENDEREÇO</InfoText>
+        <FieldText>{ address }</FieldText>
+
+        <InfoText>TELEFONE</InfoText>
+        <FieldText>{ phone }</FieldText>
+
+        <InfoText>NOME DE USUÁRIO</InfoText>
+        <FieldText>{ username }</FieldText>
+
+        <ButtonsView>
+          <NavButton onPress={() => navigation.navigate('Main')}>
+            <MenuText>
                 PÁGINA PRINCIPAL
-              </MenuText>
-            </NavButton>
-            <NavButton onPress={() => navigation.navigate('Register')}>
-              <MenuText>
+            </MenuText>
+          </NavButton>
+          <NavButton onPress={() => navigation.navigate('Register')}>
+            <MenuText>
                 EDITAR PERFIL
-              </MenuText>
-            </NavButton>
-          </ButtonsView>
-        
-        </Container>
+            </MenuText>
+          </NavButton>
+        </ButtonsView>
+
+      </Container>
     </ScrollContainer>
-    
-    );
-  }
-}
+
+  );
+};
+
 
 const mapStateToProps = (state) => {
-  const { registration } = state;
-  return { registration };
+  const { user } = state;
+  return { user };
 };
 
 Profile.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
+  user: PropTypes.shape(
+    {
+      fullName: PropTypes.string.isRequired,
+      age: PropTypes.string.isRequired,
+      email: PropTypes.string.isRequired,
+      cityState: PropTypes.string.isRequired,
+      city: PropTypes.string.isRequired,
+      address: PropTypes.string.isRequired,
+      phone: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired,
+    },
+  ).isRequired,
 };
 
 export default connect(mapStateToProps)(Profile);

@@ -1,6 +1,6 @@
 import { ADD_PROFILE } from './types';
 
-export const addProfile = (fields) => ({
+export const addProfile = (user) => ({
   type: ADD_PROFILE,
-  payload: { fields },
+  payload: { user },
 });
