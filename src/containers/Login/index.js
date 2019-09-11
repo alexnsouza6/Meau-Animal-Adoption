@@ -25,12 +25,17 @@ export default class Login extends React.Component {
       .catch((error) => this.setState({ errorMessage: error.message }));
   };
 
-  signIn = async () => {
-    const { navigation } = this.props;
-
+  isSignedIn = async () => {
     await GoogleSignin.configure({
       webClientId: '821505612282-9qgadrsvbv8pqivpv8idur6mqkdmft8t.apps.googleusercontent.com', // required
     });
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    this.setState({ logged: isSignedIn });
+  };
+
+  signIn = async () => {
+    const { navigation } = this.props;
+
     await GoogleSignin.hasPlayServices();
     GoogleSignin.signIn().then(() => navigation.navigate('Main'));
     this.setState({ logged: true });
@@ -48,6 +53,8 @@ export default class Login extends React.Component {
       email, password, errorMessage, logged,
     } = this.state;
     const { navigation } = this.props;
+
+    this.isSignedIn();
     return (
       <LoginContainer>
         <Text>Login</Text>

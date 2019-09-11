@@ -20,8 +20,10 @@
       "git add"
     ]
   },
-  "rnpm":{
-    "assets":["./assets/fonts/"]
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
   },
   "dependencies": {
     "@react-native-firebase/app": "^0.3.0",
