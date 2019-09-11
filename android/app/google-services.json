@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "821505612282-krevekr4vn6e8pplb9aq11s2c03ism26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.reactjs.native.example.MeauAdoption",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
           "client_id": "821505612282-q9adisprljrnont739d4h39747o8chbq.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
