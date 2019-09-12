@@ -1,0 +1,28 @@
+import styled from 'styled-components/native';
+import { getStatusBarHeight } from 'react-native-iphone-x-helper';
+
+export const HeaderContainer = styled.View`
+  marginTop: ${getStatusBarHeight()};
+  backgroundColor: #ffd358;
+  display: flex;
+  flexDirection: row;
+  alignItems: center;
+  justifyContent: space-between;
+  height: 56;
+  paddingRight: 12;
+`;
+
+export const Header = styled.View`
+  display: flex;
+  flexDirection: row;
+  alignItems: center;
+  marginLeft: 20;
+`;
+
+export const HeaderText = styled.Text`
+  fontFamily: Roboto;
+  fontSize: 25;
+  fontWeight: 900;
+  color: #434343;
+  marginLeft: 20;
+`;
