@@ -2,14 +2,17 @@ import React from 'react';
 import { Text, Button, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import Icon from 'react-native-vector-icons/Zocial';
 
 import { GoogleSignin } from 'react-native-google-signin';
 import firebase from '../../config/firebase';
 import {
-  LoginContainer, ErrorText, UserNameInput, PasswordInput, SignInButton, SignInText,
+  LoginContainer, ErrorText, UserNameInput,
+  PasswordInput, SignInButton, SignInText,
 } from './style';
 
 import '@react-native-firebase/auth';
+import ScreenHeader from '../../components/ScreenHeader';
 
 
 export default class Login extends React.Component {
@@ -58,28 +61,30 @@ export default class Login extends React.Component {
 
     this.isSignedIn();
     return (
-      <LoginContainer>
-        <Text>Login</Text>
-        {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
-        <UserNameInput
-          autoCapitalize="none"
-          placeholder="Email"
-          onChangeText={(email) => this.setState({ email })}
-          value={email}
-        />
-        <PasswordInput
-          secureTextEntry
-          autoCapitalize="none"
-          placeholder="Password"
-          onChangeText={(password) => this.setState({ password })}
-          value={password}
-        />
-        <SignInButton onPress={this.handleLogin}>
-          <SignInText> Entrar </SignInText>
-        </SignInButton>
-        <View>
-          <LoginButton
-            onLoginFinished={
+      <>
+        <ScreenHeader title="Login" color="#88c9bf" />
+        <LoginContainer>
+          {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+          <UserNameInput
+            autoCapitalize="none"
+            placeholder="Email"
+            onChangeText={(email) => this.setState({ email })}
+            value={email}
+          />
+          <PasswordInput
+            secureTextEntry
+            autoCapitalize="none"
+            placeholder="Password"
+            onChangeText={(password) => this.setState({ password })}
+            value={password}
+          />
+
+          <SignInButton onPress={this.handleLogin}>
+            <SignInText> Entrar </SignInText>
+          </SignInButton>
+          <View>
+            <LoginButton
+              onLoginFinished={
             (error, result) => {
               if (!error && !result.isCancelled) {
                 AccessToken.getCurrentAccessToken().then(
@@ -90,15 +95,19 @@ export default class Login extends React.Component {
               }
             }
           }
-            onLogoutFinished={() => console.log('logout.')}
+            />
+          </View>
+          <Icon.Button name="googleplus" backgroundColor="#f15f5c" onPress={logged ? this.signOut : this.signIn}>
+            <Text>
+              {logged ? 'Logout Google' : 'Login Google'}
+            </Text>
+          </Icon.Button>
+          <Button
+            title="Don't have an account? Sign Up"
+            onPress={() => navigation.navigate('SignUp')}
           />
-        </View>
-        <Button title={logged ? 'Logout Google' : 'Login Google'} onPress={logged ? this.signOut : this.signIn} />
-        <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => navigation.navigate('SignUp')}
-        />
-      </LoginContainer>
+        </LoginContainer>
+      </>
     );
   }
 }

@@ -8,7 +8,7 @@ import ScreenHeader from '../../components/ScreenHeader';
 
 const Feed = () => (
   <>
-    <ScreenHeader title="Adotar" />
+    <ScreenHeader title="Adotar" color="#ffd358" />
     <FeedContainer>
       <FeedHeader>
         <AnimalName>

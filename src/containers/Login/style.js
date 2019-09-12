@@ -3,6 +3,8 @@ import styled from 'styled-components/native';
 export const LoginContainer = styled.View`
     flex: 1;
     paddingTop: 64;
+    display: flex;
+    alignItems: center;
 
 `;
 
