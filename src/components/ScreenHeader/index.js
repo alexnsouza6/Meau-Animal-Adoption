@@ -4,8 +4,8 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Header, HeaderContainer, HeaderText } from './style';
 
-const ScreenHeader = ({ title }) => (
-  <HeaderContainer>
+const ScreenHeader = ({ title, color }) => (
+  <HeaderContainer style={{ backgroundColor: color }}>
     <Header>
       <Icon name="menu" size={28} color="#434343" />
       <HeaderText> {title}</HeaderText>
@@ -16,6 +16,7 @@ const ScreenHeader = ({ title }) => (
 
 ScreenHeader.propTypes = {
   title: PropTypes.string.isRequired,
+  color: PropTypes.string.isRequired,
 };
 
 export default ScreenHeader;

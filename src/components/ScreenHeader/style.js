@@ -3,7 +3,6 @@ import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 
 export const HeaderContainer = styled.View`
   marginTop: ${getStatusBarHeight()};
-  backgroundColor: #ffd358;
   display: flex;
   flexDirection: row;
   alignItems: center;
