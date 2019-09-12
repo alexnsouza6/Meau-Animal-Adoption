@@ -63,7 +63,7 @@ const Profile = ({ user, navigation }) => {
 
 const mapStateToProps = (state) => {
   const { user } = state;
-  return { user };
+  return user;
 };
 
 Profile.propTypes = {
