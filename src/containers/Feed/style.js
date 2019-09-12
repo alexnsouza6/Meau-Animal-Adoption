@@ -1,32 +1,52 @@
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
 
-export const FeedContainer = styled.View`
-  marginLeft: 3;
-  marginRight: 3;
+export const FeedContainer = styled.ScrollView.attrs({
+  contentContainerStyle: {
+    alignItems: 'center',
+  },
+})`
+  display: flex;
+  marginTop: 10;
+  marginBottom: 10;
+
 `;
 
 export const Feed = styled.View`
-  height: 50;
-  width: ${Dimensions.get('window') - 6};
   display: flex;
   flexDirection: column;
+  width: 344;
+  height: 294;
 `;
 
 export const FeedHeader = styled.View`
   flexDirection: row;
+  backgroundColor: #fee29b;
   justifyContent: space-between;
+  paddingTop: 10;
+  paddingBottom: 10;
+  paddingRight: 10;
+  paddingLeft: 10;
+  borderTopLeftRadius: 5;
+  borderTopRightRadius: 5;
 `;
 
 export const FeedImage = styled.Image`
-  resizeMode: cover;
-  width: 344;
+  width: 343;
   height: 183;
 `;
 
 export const FeedBody = styled.View`
   display: flex;
-
+  borderBottomLeftRadius: 5;
+  borderBottomRightRadius: 5;
+  paddingTop: 10;
+  paddingBottom: 10;
+  paddingRight: 10;
+  paddingLeft: 10;
+  borderColor: #434343;
+  borderLeftWidth: 1;
+  borderRightWidth: 1;
+  borderBottomWidth: 1;
 `;
 
 export const Info = styled.Text`
@@ -37,14 +57,14 @@ export const Info = styled.Text`
 
 export const AnimalInfo = styled.View`
   display: flex;  
+  flexDirection: row;
   justifyContent: space-between;
+  marginBottom: 10;
 `;
 
 export const AnimalAddress = styled.View`
-  fontFamily: Roboto;
-  fontSize: 12;
-  color: #434343;
-  justifyContent: center;;
+  display: flex;
+  alignItems: center;
 `;
 
 export const AnimalName = styled.Text`
