@@ -5,7 +5,9 @@ import { LoginButton, AccessToken } from 'react-native-fbsdk';
 
 import { GoogleSignin } from 'react-native-google-signin';
 import firebase from '../../config/firebase';
-import { LoginContainer, LoginText, ErrorText } from './style';
+import {
+  LoginContainer, ErrorText, UserNameInput, PasswordInput, SignInButton, SignInText,
+} from './style';
 
 import '@react-native-firebase/auth';
 
@@ -52,20 +54,22 @@ export default class Login extends React.Component {
       <LoginContainer>
         <Text>Login</Text>
         {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
-        <LoginText
+        <UserNameInput
           autoCapitalize="none"
           placeholder="Email"
           onChangeText={(email) => this.setState({ email })}
           value={email}
         />
-        <LoginText
+        <PasswordInput
           secureTextEntry
           autoCapitalize="none"
           placeholder="Password"
           onChangeText={(password) => this.setState({ password })}
           value={password}
         />
-        <Button title="Login" onPress={this.handleLogin} />
+        <SignInButton onPress={this.handleLogin}>
+          <SignInText> Entrar </SignInText>
+        </SignInButton>
         <View>
           <LoginButton
             onLoginFinished={
