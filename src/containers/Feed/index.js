@@ -6,9 +6,9 @@ import {
 
 import ScreenHeader from '../../components/ScreenHeader';
 
-const Feed = () => (
+const Feed = ({ navigation }) => (
   <>
-    <ScreenHeader title="Adotar" color="#ffd358" />
+    <ScreenHeader title="Adotar" color="#ffd358" navigationProps={navigation} />
     <FeedContainer>
       <FeedHeader>
         <AnimalName>

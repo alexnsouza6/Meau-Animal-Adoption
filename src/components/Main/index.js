@@ -1,6 +1,6 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
+import ScreenHeader from '../ScreenHeader';
 
 import {
   Container, Title, Description,
@@ -13,6 +13,7 @@ const meauImage = require('../../assets/images/Meau_marca_2.png');
 
 const Main = ({ navigation }) => (
   <Container>
+    <ScreenHeader title="Meau" color="#ffd358" navigationProps={navigation} />
     <Title> Olá! </Title>
     <DescriptionContainer>
       <Description>Bem vindo ao Meau!</Description>
@@ -37,7 +38,7 @@ const Main = ({ navigation }) => (
       </MenuButton>
     </Menu>
     <LoginButton onPress={() => { navigation.navigate('Login'); }} />
-    <RegisterButton onPress={() => { navigation.navigate('Register'); }} />
+    <RegisterButton onPress={() => { navigation.navigate('Registrar'); }} />
 
     <Logo source={meauImage} />
   </Container>
@@ -48,6 +49,5 @@ Main.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
-
 
 export default Main;

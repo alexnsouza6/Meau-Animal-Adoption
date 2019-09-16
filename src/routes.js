@@ -1,4 +1,5 @@
-import { createAppContainer, createSwitchNavigator } from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import Main from './components/Main';
 import Loading from './components/Loading';
@@ -8,18 +9,24 @@ import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Feed from './containers/Feed';
 
-const Routes = createAppContainer(createSwitchNavigator(
+const Routes = createAppContainer(createDrawerNavigator(
   {
     Loading,
     SignUp,
-    Register,
-    Profile,
+    Registrar: {
+      screen: Register,
+    },
+    Perfil: {
+      screen: Profile,
+    },
     Login,
-    Main,
+    Início: {
+      screen: Main,
+    },
     Feed,
   },
   {
-    initialRouteName: 'Main',
+    initialRouteName: 'Início',
   },
 ));
 

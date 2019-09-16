@@ -4,17 +4,31 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import { Header, HeaderContainer, HeaderText } from './style';
 
-const ScreenHeader = ({ title, color }) => (
-  <HeaderContainer style={{ backgroundColor: color }}>
-    <Header>
-      <Icon name="menu" size={28} color="#434343" />
-      <HeaderText> {title}</HeaderText>
-    </Header>
-    <Icon name="search" size={28} color="#434343" />
-  </HeaderContainer>
-);
+
+class ScreenHeader extends React.Component {
+  // Structure for the navigatin Drawer
+  toggleDrawer = () => {
+    // Props to open/close the drawer
+    const { navigationProps } = this.props;
+    navigationProps.toggleDrawer();
+  };
+
+  render() {
+    const { title, color } = this.props;
+    return (
+      <HeaderContainer style={{ backgroundColor: color }}>
+        <Header>
+          <Icon name="menu" size={28} color="#434343" onPress={this.toggleDrawer.bind(this)} />
+          <HeaderText>{ title }</HeaderText>
+        </Header>
+        <Icon name="search" size={28} color="#434343" />
+      </HeaderContainer>
+    );
+  }
+}
 
 ScreenHeader.propTypes = {
+  navigationProps: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
 };

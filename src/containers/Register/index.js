@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import firebase from '../../config/firebase';
 import { addProfile } from '../../actions/user/index';
+import ScreenHeader from '../../components/ScreenHeader';
+
 import {
   Container, FieldText,
   DescriptionContainer, Description, InfoText,
@@ -34,7 +36,7 @@ class Register extends React.Component {
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
         dispatch(addProfile(this.state));
-        navigation.navigate('Main');
+        navigation.navigate('Início');
       })
       .catch((error) => {
         console.log(error);
@@ -45,8 +47,10 @@ class Register extends React.Component {
     const {
       fullName, age, email, cityState, city, address, phone, username, password,
     } = this.state;
+    const { navigation } = this.props;
     return (
       <ScrollContainer>
+        <ScreenHeader title="Registrar" color="#ffd358" navigationProps={navigation} />
         <Container>
           <DescriptionContainer>
             <Description>As informações preenchidas

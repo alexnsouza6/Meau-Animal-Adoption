@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import Icon from 'react-native-vector-icons/Zocial';
 
+
 import { GoogleSignin } from 'react-native-google-signin';
 import firebase from '../../config/firebase';
 import {
@@ -62,7 +63,7 @@ export default class Login extends React.Component {
     this.isSignedIn();
     return (
       <>
-        <ScreenHeader title="Login" color="#88c9bf" />
+        <ScreenHeader title="Login" color="#ffd358" navigationProps={navigation} />
         <LoginContainer>
           {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
           <UserNameInput
