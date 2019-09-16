@@ -164,6 +164,7 @@
 			children = (
 				58068B04232F0CA3009AE1B4 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				580A6A81232722B4005BC523 /* Images.xcassets */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				580A6A8323272A8C005BC523 /* Images.xcassets */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
