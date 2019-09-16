@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addProfile } from '../../actions/index';
+import firebase from '../../config/firebase';
+import { addProfile } from '../../actions/user/index';
 import {
   Container, FieldText,
   DescriptionContainer, Description, InfoText,
@@ -20,13 +21,22 @@ class Register extends React.Component {
     phone: '',
     username: '',
     password: '',
-  }
+  };
+
 
   handleUser = () => {
     const { navigation, dispatch } = this.props;
 
-    dispatch(addProfile(this.state));
-    navigation.navigate('Profile');
+    const { email, password } = this.state;
+
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then(() => {
+        dispatch(addProfile(this.state));
+        navigation.navigate('Main');
+      })
+      .catch((error) => this.setState({ errorMessage: error.message }));
   }
 
   render() {
