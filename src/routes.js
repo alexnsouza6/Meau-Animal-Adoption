@@ -4,7 +4,6 @@ import { createDrawerNavigator } from 'react-navigation-drawer';
 import Main from './components/Main';
 import Loading from './components/Loading';
 import SignUp from './containers/SignUp';
-import Register from './containers/Register';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Feed from './containers/Feed';
@@ -12,21 +11,29 @@ import Feed from './containers/Feed';
 const Routes = createAppContainer(createDrawerNavigator(
   {
     Loading,
-    SignUp,
-    Registrar: {
-      screen: Register,
+    SignUp: {
+      screen: SignUp,
+      navigationOptions: {
+        drawerLabel: 'Cadastro',
+      },
     },
-    Perfil: {
+    Profile: {
       screen: Profile,
+      navigationOptions: {
+        drawerLabel: 'Meu Perfil',
+      },
     },
     Login,
-    Início: {
+    Main: {
       screen: Main,
+      navigationOptions: {
+        drawerLabel: 'Início',
+      },
     },
     Feed,
   },
   {
-    initialRouteName: 'Início',
+    initialRouteName: 'Main',
   },
 ));
 
