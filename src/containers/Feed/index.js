@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Text } from 'react-native';
 import {
   FeedContainer, FeedBody, FeedHeader, FeedImage, Info, AnimalName, AnimalInfo, AnimalAddress,
@@ -40,5 +41,11 @@ const Feed = ({ navigation }) => (
     </FeedContainer>
   </>
 );
+
+Feed.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Feed;
