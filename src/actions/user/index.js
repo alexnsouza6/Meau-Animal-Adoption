@@ -1,13 +1,12 @@
 import firestore from '@react-native-firebase/firestore';
+
 import { ADD_PROFILE } from './types';
 
-export const addProfile = (user) => (dispatch) => {
-  const userRef = firestore().collection('users');
+export const addProfile = (user) => async (dispatch) => {
+  const userRef = firestore()
+    .collection('users');
 
-  console.log('Gravando user: ', user);
-  console.log('User Ref: ', userRef.doc('tbCmYqZJ6dhHqc58Lzm5').get());
-
-  userRef.add({
+  const userObject = {
     fullName: user.fullName,
     age: user.age,
     email: user.email,
@@ -16,10 +15,13 @@ export const addProfile = (user) => (dispatch) => {
     address: user.address,
     phone: user.phone,
     username: user.username,
-  });
+  };
+
+  await userRef.add(userObject);
+
 
   dispatch({
     type: ADD_PROFILE,
-    payload: user,
+    payload: userObject,
   });
 };
