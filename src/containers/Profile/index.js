@@ -46,12 +46,12 @@ const Profile = ({ user, navigation }) => {
         <FieldText>{ username }</FieldText>
 
         <ButtonsView>
-          <NavButton onPress={() => navigation.navigate('Início')}>
+          <NavButton onPress={() => navigation.navigate('Main')}>
             <MenuText>
                 PÁGINA PRINCIPAL
             </MenuText>
           </NavButton>
-          <NavButton onPress={() => navigation.navigate('Registrar')}>
+          <NavButton onPress={() => navigation.navigate('SingUp')}>
             <MenuText>
                 EDITAR PERFIL
             </MenuText>
