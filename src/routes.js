@@ -1,5 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createDrawerNavigator } from 'react-navigation-drawer';
+import SideMenu from './components/SideMenu';
 
 import Main from './components/Main';
 import Loading from './components/Loading';
@@ -11,28 +12,14 @@ import Feed from './containers/Feed';
 const Routes = createAppContainer(createDrawerNavigator(
   {
     Loading,
-    SignUp: {
-      screen: SignUp,
-      navigationOptions: {
-        drawerLabel: 'Cadastro',
-      },
-    },
-    Profile: {
-      screen: Profile,
-      navigationOptions: {
-        drawerLabel: 'Meu Perfil',
-      },
-    },
+    SignUp,
+    Profile,
     Login,
-    Main: {
-      screen: Main,
-      navigationOptions: {
-        drawerLabel: 'Início',
-      },
-    },
+    Main,
     Feed,
   },
   {
+    contentComponent: SideMenu,
     initialRouteName: 'Main',
   },
 ));
