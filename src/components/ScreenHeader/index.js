@@ -19,7 +19,7 @@ class ScreenHeader extends React.Component {
       <HeaderContainer style={{ backgroundColor: color }}>
         <StatusBar backgroundColor="#f7a800" barStyle="light-content" />
         <Header>
-          <Icon name="menu" size={28} color="#434343" onPress={this.toggleDrawer.bind(this)} />
+          <Icon name="menu" size={28} color="#434343" onPress={() => this.toggleDrawer()} />
           <HeaderText>{ title }</HeaderText>
         </Header>
         <Icon name="search" size={28} color="#434343" />
@@ -29,7 +29,9 @@ class ScreenHeader extends React.Component {
 }
 
 ScreenHeader.propTypes = {
-  navigationProps: PropTypes.func.isRequired,
+  navigationProps: PropTypes.shape({
+    toggleDrawer: PropTypes.func.isRequired,
+  }).isRequired,
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
 };
