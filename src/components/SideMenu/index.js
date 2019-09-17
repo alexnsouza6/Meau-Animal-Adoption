@@ -1,12 +1,13 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { ScrollView, Text } from 'react-native';
+import { ScrollView } from 'react-native';
+import { Avatar } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
-  Container, NavItem, FooterText,
+  Container, NavItem, FooterText, AvatarSection, IconTextSection,
   NavPetSection, NavSectionText, NavItemContainer,
-  NavInfoSection, NavConfigSection, FooterContainer,
+  NavInfoSection, NavConfigSection, FooterContainer, NavItemText,
 } from './style';
 
 class SideMenu extends Component {
@@ -23,78 +24,100 @@ class SideMenu extends Component {
       <Container>
         <ScrollView>
 
+          <AvatarSection>
+            <Avatar
+              size={70}
+              rounded
+              icon={{ name: 'user', type: 'font-awesome' }}
+              activeOpacity={0.7}
+              // eslint-disable-next-line react-native/no-inline-styles
+              containerStyle={{ marginLeft: 16, marginTop: 40, marginBottom: 68 }}
+            />
+          </AvatarSection>
+
           <NavItemContainer>
             <NavItem onPress={this.navigateToScreen('Profile')}>
-              <Text>Meu Perfil</Text>
+              <NavItemText>Meu Perfil</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Meus Pets</Text>
+              <NavItemText>Meus Pets</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Favoritos</Text>
+              <NavItemText>Favoritos</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Chat</Text>
+              <NavItemText>Chat</NavItemText>
             </NavItem>
           </NavItemContainer>
 
           <NavPetSection>
-            <Icon name="pets" size={25} color="#757575" />
-            <NavSectionText>
-              Atalhos
-            </NavSectionText>
+            <IconTextSection>
+              <Icon name="pets" size={25} color="#757575" />
+              <NavSectionText>
+                Atalhos
+              </NavSectionText>
+            </IconTextSection>
+            <Icon name="arrow-drop-down" size={25} color="#757575" />
           </NavPetSection>
 
           <NavItemContainer>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Cadastrar um pet</Text>
+              <NavItemText>Cadastrar um pet</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('Feed')}>
-              <Text>Adotar um pet</Text>
+              <NavItemText>Adotar um pet</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Ajudar um pet</Text>
+              <NavItemText>Ajudar um pet</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Apadrinhar um pet</Text>
+              <NavItemText>Apadrinhar um pet</NavItemText>
             </NavItem>
           </NavItemContainer>
 
           <NavInfoSection>
-            <Icon name="info" size={25} color="#757575" />
-            <NavSectionText>
-              Informações
-            </NavSectionText>
+            <IconTextSection>
+              <Icon name="info" size={25} color="#757575" />
+              <NavSectionText>
+                Informações
+              </NavSectionText>
+            </IconTextSection>
+            <Icon name="arrow-drop-down" size={25} color="#757575" />
           </NavInfoSection>
 
           <NavItemContainer>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Dicas</Text>
+              <NavItemText>Dicas</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Eventos</Text>
+              <NavItemText>Eventos</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Legislação</Text>
+              <NavItemText>Legislação</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Termo de adoção</Text>
+              <NavItemText>Termo de adoção</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Histórias de adoção</Text>
+              <NavItemText>Histórias de adoção</NavItemText>
             </NavItem>
           </NavItemContainer>
 
           <NavConfigSection>
-            <Icon name="settings" size={25} color="#757575" />
-            <NavSectionText>
-              Configurações
-            </NavSectionText>
+
+            <IconTextSection>
+              <Icon name="settings" size={25} color="#757575" />
+              <NavSectionText>
+                Configurações
+              </NavSectionText>
+            </IconTextSection>
+
+            <Icon name="arrow-drop-down" size={25} color="#757575" />
           </NavConfigSection>
 
           <NavItemContainer>
             <NavItem onPress={this.navigateToScreen('#')}>
-              <Text>Privacidade</Text>
+              <NavItemText>Privacidade</NavItemText>
             </NavItem>
           </NavItemContainer>
 
