@@ -4,7 +4,7 @@ import { ScrollView, Text } from 'react-native';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {
-  Container, NavItem,
+  Container, NavItem, FooterText,
   NavPetSection, NavSectionText, NavItemContainer,
   NavInfoSection, NavConfigSection, FooterContainer,
 } from './style';
@@ -99,7 +99,7 @@ class SideMenu extends Component {
           </NavItemContainer>
 
           <FooterContainer>
-            <Text>Sair</Text>
+            <FooterText>Sair</FooterText>
           </FooterContainer>
 
         </ScrollView>
