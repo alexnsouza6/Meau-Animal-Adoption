@@ -7,6 +7,8 @@ import Register from './containers/Register';
 import Profile from './containers/Profile';
 import Login from './containers/Login';
 import Feed from './containers/Feed';
+import PetRegister from './containers/PetRegister';
+import PetFilter from './containers/PetFilter';
 
 const Routes = createAppContainer(createSwitchNavigator(
   {
@@ -17,6 +19,8 @@ const Routes = createAppContainer(createSwitchNavigator(
     Login,
     Main,
     Feed,
+    PetRegister,
+    PetFilter
   },
   {
     initialRouteName: 'Main',

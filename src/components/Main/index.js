@@ -30,9 +30,14 @@ const Main = ({ navigation }) => (
           AJUDAR
         </MenuText>
       </MenuButton>
-      <MenuButton>
+      <MenuButton onPress={() => { navigation.navigate('PetRegister'); }}>
         <MenuText>
           CADASTRAR ANIMAL
+        </MenuText>
+      </MenuButton>
+      <MenuButton onPress={() => { navigation.navigate('PetFilter'); }}>
+        <MenuText>
+          FILTRAR ANIMAL
         </MenuText>
       </MenuButton>
     </Menu>
