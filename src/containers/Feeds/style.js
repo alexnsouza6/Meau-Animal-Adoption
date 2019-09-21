@@ -11,7 +11,7 @@ export const FeedContainer = styled.ScrollView.attrs({
 
 `;
 
-export const Feed = styled.View`
+export const Feed = styled.TouchableOpacity`
   display: flex;
   flexDirection: column;
   width: 344;

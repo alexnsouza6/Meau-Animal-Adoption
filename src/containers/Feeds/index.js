@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { TouchableOpacity } from 'react-native';
 import {
@@ -7,11 +8,11 @@ import {
 
 import ScreenHeader from '../../components/ScreenHeader';
 
-const Feeds = () => (
+const Feeds = ({ navigation }) => (
   <>
-    <ScreenHeader title="Adotar" color="#ffd358" />
+    <ScreenHeader title="Adotar" color="#ffd358" iconRight="search" iconLeft="menu" navigation={navigation} />
     <FeedContainer>
-      <Feed>
+      <Feed onPress={() => navigation.navigate('AnimalFeed')}>
         <FeedHeader>
           <AnimalName>
             Pequi
@@ -101,5 +102,11 @@ const Feeds = () => (
     </FeedContainer>
   </>
 );
+
+Feeds.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default Feeds;
