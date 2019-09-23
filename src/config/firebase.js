@@ -1,5 +1,6 @@
 import firebase from '@react-native-firebase/app';
 import '@react-native-firebase/database';
+import '@react-native-firebase/firestore';
 
 const firebaseConfig = {
   apiKey: 'AIzaSyAOCemXaF-cVi9CB0Pjp6_OT5_y5b2MMWQ',
@@ -13,6 +14,7 @@ const firebaseConfig = {
     appId: '3635034359855680',
   },
 };
+
 
 export default !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig)

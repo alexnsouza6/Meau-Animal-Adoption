@@ -1,4 +1,4 @@
-import { ADD_PROFILE } from '../actions/types';
+import { ADD_PROFILE } from '../actions/user/types';
 
 const initialState = {};
 

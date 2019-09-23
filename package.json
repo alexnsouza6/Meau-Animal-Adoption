@@ -29,6 +29,7 @@
     "@react-native-firebase/app": "^0.3.0",
     "@react-native-firebase/auth": "^0.3.0",
     "@react-native-firebase/database": "^0.3.0",
+    "@react-native-firebase/firestore": "^0.3.0",
     "prop-types": "^15.7.2",
     "react": "16.8.6",
     "react-native": "0.60.5",
@@ -41,6 +42,7 @@
     "react-redux": "^7.1.1",
     "reactotron-react-native": "^3.6.5",
     "redux": "^4.0.4",
+    "redux-thunk": "^2.3.0",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
