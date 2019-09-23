@@ -4,10 +4,7 @@
     "es6": true,
     "jest": true
   },
-  "extends": [
-    "airbnb",
-    "plugin:react-native/all"
-  ],
+  "extends": ["airbnb", "plugin:react-native/all"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly",
@@ -20,20 +17,12 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "react",
-    "react-native",
-    "jsx-a11y",
-    "import"
-  ],
+  "plugins": ["react", "react-native", "jsx-a11y", "import"],
   "rules": {
     "react/jsx-filename-extension": [
       "error",
       {
-        "extensions": [
-          ".js",
-          ".jsx"
-        ]
+        "extensions": [".js", ".jsx"]
       }
     ],
     "import/prefer-default-export": "off",
@@ -49,7 +38,8 @@
     "global-require": "off",
     "react-native/no-raw-text": "off",
     "react/state-in-constructor": "off",
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "jsx-a11y/accessible-emoji": "off"
   },
   "settings": {
     "import/resolver": {

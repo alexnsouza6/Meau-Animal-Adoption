@@ -15,6 +15,22 @@
       },
       "oauth_client": [
         {
+          "client_id": "821505612282-krevekr4vn6e8pplb9aq11s2c03ism26.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.reactjs.native.example.MeauAdoption",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "821505612282-q9adisprljrnont739d4h39747o8chbq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.reactjs.native.example.MeauAdoption",
+            "certificate_hash": "6cd98a16150ce43821ef0af3500a7ea213d8a928"
+          }
+        },
+        {
           "client_id": "821505612282-9qgadrsvbv8pqivpv8idur6mqkdmft8t.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -28,7 +44,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "821505612282-9qgadrsvbv8pqivpv8idur6mqkdmft8t.apps.googleusercontent.com",
+              "client_id": "821505612282-roftct81e2r7so8opovlucv8kiul1n9c.apps.googleusercontent.com",
               "client_type": 3
             },
             {

@@ -2,12 +2,17 @@ import React from 'react';
 import { Text, Button, View } from 'react-native';
 import PropTypes from 'prop-types';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import Icon from 'react-native-vector-icons/Zocial';
 
 import { GoogleSignin } from 'react-native-google-signin';
 import firebase from '../../config/firebase';
-import { LoginContainer, LoginText, ErrorText } from './style';
+import {
+  LoginContainer, ErrorText, UserNameInput,
+  PasswordInput, SignInButton, SignInText,
+} from './style';
 
 import '@react-native-firebase/auth';
+import ScreenHeader from '../../components/ScreenHeader';
 
 
 export default class Login extends React.Component {
@@ -25,12 +30,17 @@ export default class Login extends React.Component {
       .catch((error) => this.setState({ errorMessage: error.message }));
   };
 
-  signIn = async () => {
-    const { navigation } = this.props;
-
+  isSignedIn = async () => {
     await GoogleSignin.configure({
       webClientId: '821505612282-9qgadrsvbv8pqivpv8idur6mqkdmft8t.apps.googleusercontent.com', // required
     });
+    const isSignedIn = await GoogleSignin.isSignedIn();
+    this.setState({ logged: isSignedIn });
+  };
+
+  signIn = async () => {
+    const { navigation } = this.props;
+
     await GoogleSignin.hasPlayServices();
     GoogleSignin.signIn().then(() => navigation.navigate('Main'));
     this.setState({ logged: true });
@@ -48,27 +58,33 @@ export default class Login extends React.Component {
       email, password, errorMessage, logged,
     } = this.state;
     const { navigation } = this.props;
+
+    this.isSignedIn();
     return (
-      <LoginContainer>
-        <Text>Login</Text>
-        {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
-        <LoginText
-          autoCapitalize="none"
-          placeholder="Email"
-          onChangeText={(email) => this.setState({ email })}
-          value={email}
-        />
-        <LoginText
-          secureTextEntry
-          autoCapitalize="none"
-          placeholder="Password"
-          onChangeText={(password) => this.setState({ password })}
-          value={password}
-        />
-        <Button title="Login" onPress={this.handleLogin} />
-        <View>
-          <LoginButton
-            onLoginFinished={
+      <>
+        <ScreenHeader title="Login" color="#88c9bf" iconRight="search" iconLeft="menu" />
+        <LoginContainer>
+          {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
+          <UserNameInput
+            autoCapitalize="none"
+            placeholder="Email"
+            onChangeText={(email) => this.setState({ email })}
+            value={email}
+          />
+          <PasswordInput
+            secureTextEntry
+            autoCapitalize="none"
+            placeholder="Password"
+            onChangeText={(password) => this.setState({ password })}
+            value={password}
+          />
+
+          <SignInButton onPress={this.handleLogin}>
+            <SignInText> Entrar </SignInText>
+          </SignInButton>
+          <View>
+            <LoginButton
+              onLoginFinished={
             (error, result) => {
               if (!error && !result.isCancelled) {
                 AccessToken.getCurrentAccessToken().then(
@@ -79,15 +95,19 @@ export default class Login extends React.Component {
               }
             }
           }
-            onLogoutFinished={() => console.log('logout.')}
+            />
+          </View>
+          <Icon.Button name="googleplus" backgroundColor="#f15f5c" onPress={logged ? this.signOut : this.signIn}>
+            <Text>
+              {logged ? 'Logout Google' : 'Login Google'}
+            </Text>
+          </Icon.Button>
+          <Button
+            title="Don't have an account? Sign Up"
+            onPress={() => navigation.navigate('SignUp')}
           />
-        </View>
-        <Button title={logged ? 'Logout Google' : 'Login Google'} onPress={logged ? this.signOut : this.signIn} />
-        <Button
-          title="Don't have an account? Sign Up"
-          onPress={() => navigation.navigate('SignUp')}
-        />
-      </LoginContainer>
+        </LoginContainer>
+      </>
     );
   }
 }

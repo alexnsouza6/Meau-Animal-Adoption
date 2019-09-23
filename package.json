@@ -20,6 +20,11 @@
       "git add"
     ]
   },
+  "rnpm": {
+    "assets": [
+      "./assets/fonts/"
+    ]
+  },
   "dependencies": {
     "@react-native-firebase/app": "^0.3.0",
     "@react-native-firebase/auth": "^0.3.0",
@@ -31,8 +36,11 @@
     "react-native-gesture-handler": "^1.4.1",
     "react-native-google-signin": "^2.0.0",
     "react-native-iphone-x-helper": "^1.2.1",
+    "react-native-vector-icons": "^6.6.0",
     "react-navigation": "^4.0.0",
+    "react-redux": "^7.1.1",
     "reactotron-react-native": "^3.6.5",
+    "redux": "^4.0.4",
     "styled-components": "^4.3.2"
   },
   "devDependencies": {
@@ -53,6 +61,7 @@
     "eslint-plugin-react-native": "^3.7.0",
     "husky": "^3.0.5",
     "jest": "24.9.0",
+    "jetifier": "^1.6.4",
     "lint-staged": "^9.2.5",
     "metro-react-native-babel-preset": "0.54.1",
     "prettier": "^1.18.2",

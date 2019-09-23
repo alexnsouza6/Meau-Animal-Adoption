@@ -22,7 +22,7 @@ export const Menu = styled.View`
 export const Title = styled.Text`
     fontSize: 72px;
     color: #ffd358;
-    fontFamily: Courgette-Regular;
+    fontFamily: Courgette;
     paddingTop: ${getStatusBarHeight() + 56}px;
     paddingBottom: 52px;
 `;
