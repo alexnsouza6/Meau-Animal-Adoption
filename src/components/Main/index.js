@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ScreenHeader from '../ScreenHeader';
 
 import {
   Container, Title, Description,
@@ -13,7 +12,6 @@ const meauImage = require('../../assets/images/Meau_marca_2.png');
 
 const Main = ({ navigation }) => (
   <>
-    <ScreenHeader title="Meau" color="#ffd358" navigation={navigation} />
     <Container>
       <Title> Olá! </Title>
       <DescriptionContainer>
