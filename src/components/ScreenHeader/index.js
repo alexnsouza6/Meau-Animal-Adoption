@@ -35,9 +35,6 @@ class ScreenHeader extends React.Component {
 }
 
 ScreenHeader.propTypes = {
-  navigationProps: PropTypes.shape({
-    toggleDrawer: PropTypes.func.isRequired,
-  }).isRequired,
   title: PropTypes.string.isRequired,
   color: PropTypes.string.isRequired,
   iconLeft: PropTypes.string.isRequired,
