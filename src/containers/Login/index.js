@@ -62,7 +62,7 @@ export default class Login extends React.Component {
     this.isSignedIn();
     return (
       <>
-        <ScreenHeader title="Login" color="#88c9bf" />
+        <ScreenHeader title="Login" color="#88c9bf" iconRight="search" iconLeft="menu" />
         <LoginContainer>
           {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
           <UserNameInput

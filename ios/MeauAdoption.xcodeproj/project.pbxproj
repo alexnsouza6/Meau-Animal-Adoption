@@ -16,9 +16,9 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* MeauAdoptionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* MeauAdoptionTests.m */; };
 		2E1AE0B3FC9A448AAFD7B63A /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5AA21AB60E3E42159AA2C35C /* Zocial.ttf */; };
-		58068B05232F0CA3009AE1B4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 58068B04232F0CA3009AE1B4 /* GoogleService-Info.plist */; };
 		580A6A8423272A8C005BC523 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 580A6A8323272A8C005BC523 /* Images.xcassets */; };
 		583519A42320BAC300419493 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
+		583E247C23368C190057BE1F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 583E247B23368C190057BE1F /* GoogleService-Info.plist */; };
 		6251248CC64342448582B3D8 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7804AB299108412D94CED5F6 /* Feather.ttf */; };
 		670342FCEE6B4E9A8F6C014E /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5B4F7B7CF72A4AF7B544C16D /* MaterialCommunityIcons.ttf */; };
 		702D01864D701F4C1E4F3698 /* libPods-MeauAdoption.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED36914E54E370B95C535B0A /* libPods-MeauAdoption.a */; };
@@ -81,8 +81,8 @@
 		3EEB86C72F099B9A26DF2CA7 /* Pods-MeauAdoption-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeauAdoption-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-MeauAdoption-tvOS/Pods-MeauAdoption-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4772AEDD09897F43E1F1EE5A /* libPods-MeauAdoptionTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-MeauAdoptionTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FAAFA588E3C46129075EB14 /* FontAwesome5_Brands.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome5_Brands.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome5_Brands.ttf"; sourceTree = "<group>"; };
-		58068B04232F0CA3009AE1B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "MeauAdoption/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		580A6A8323272A8C005BC523 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = MeauAdoption/Images.xcassets; sourceTree = "<group>"; };
+		583E247B23368C190057BE1F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "MeauAdoption/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		5AA21AB60E3E42159AA2C35C /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		5B4F7B7CF72A4AF7B544C16D /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		73E91112EA0EC0DD10254401 /* Pods-MeauAdoptionTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MeauAdoptionTests.debug.xcconfig"; path = "Target Support Files/Pods-MeauAdoptionTests/Pods-MeauAdoptionTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -162,7 +162,6 @@
 		13B07FAE1A68108700A75B9A /* MeauAdoption */ = {
 			isa = PBXGroup;
 			children = (
-				58068B04232F0CA3009AE1B4 /* GoogleService-Info.plist */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				580A6A81232722B4005BC523 /* Images.xcassets */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -422,7 +421,7 @@
 				94CACD9B1AFC4890BC654F6D /* Octicons.ttf in Resources */,
 				0CD4F2DD19CB4F6AA8AA5305 /* SimpleLineIcons.ttf in Resources */,
 				2E1AE0B3FC9A448AAFD7B63A /* Zocial.ttf in Resources */,
-				58068B05232F0CA3009AE1B4 /* GoogleService-Info.plist in Resources */,
+				583E247C23368C190057BE1F /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
