@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">MeauAdoption</string>
+    <string name="app_name">Meau</string>
+    <string name="facebook_app_id">677973532687498</string> <string name="fb_login_protocol_scheme">fb677973532687498</string>
 </resources>
