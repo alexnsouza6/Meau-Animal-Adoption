@@ -19,7 +19,7 @@ const Profile = ({ user, navigation }) => {
 
   return (
     <ScrollContainer>
-      <ScreenHeader title="Registrar" color="#ffd358" navigationProps={navigation} />
+      <ScreenHeader title="Registrar" color="#ffd358" navigation={navigation} />
       <Container>
         <InfoText>NOME COMPLETO</InfoText>
         <FieldText>{ fullName }</FieldText>

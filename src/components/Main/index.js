@@ -13,7 +13,7 @@ const meauImage = require('../../assets/images/Meau_marca_2.png');
 
 const Main = ({ navigation }) => (
   <>
-    <ScreenHeader title="Meau" color="#ffd358" navigationProps={navigation} />
+    <ScreenHeader title="Meau" color="#ffd358" navigation={navigation} />
     <Container>
       <Title> Olá! </Title>
       <DescriptionContainer>
