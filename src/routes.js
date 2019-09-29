@@ -7,6 +7,7 @@ import Loading from './components/Loading';
 import NotRegistered from './components/NotRegistered';
 import SignUp from './containers/SignUp';
 import Profile from './containers/Profile';
+import FinishProcess from './containers/FinishProcess';
 import Login from './containers/Login';
 import Feed from './containers/Feeds';
 import AnimalFeed from './containers/AnimalFeed';
@@ -21,6 +22,7 @@ const Routes = createAppContainer(createDrawerNavigator(
     Feed,
     NotRegistered,
     AnimalFeed,
+    FinishProcess,
   },
   {
     contentComponent: SideMenu,

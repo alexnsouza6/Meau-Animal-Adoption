@@ -6066,10 +6066,10 @@ react-is@^16.6.0, react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.4, react-is
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
-react-native-elements@^1.2.0:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.2.1.tgz#03348f8519d6e76188cceb16f46f83f69e1fdda4"
-  integrity sha512-7Azvb/cv06Ll/iyN52RBhX/wIv3T18/tQGy9xAj6BfZmqrlJ9WI5bkGcZTKjFik6g4DVwE4bP56hIursRwYu6g==
+react-native-elements@^1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-1.2.3.tgz#de16b592d872ec550da414f787bbf030598e702b"
+  integrity sha512-z7xwqSmLh5a4buW/zjAROTmn+4AanoWifP1VYs6cNh0AAguPKw7wp68TW2KyJykIsfugxzscGSAStl/l6NhNkA==
   dependencies:
     "@types/react-native-vector-icons" "^6.4.1"
     color "^3.1.0"
