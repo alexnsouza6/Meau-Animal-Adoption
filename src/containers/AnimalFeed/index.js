@@ -10,9 +10,9 @@ import {
   CategoryDescription, AdoptButton, AdoptText,
 } from './style';
 
-const AnimalFeed = ({ navigation, user }) => {
+const AnimalFeed = ({ navigation, userIsLogged }) => {
   function onDonationPress() {
-    if (user) { navigation.navigate('Feed'); } else { navigation.navigate('NotRegistered'); }
+    if (userIsLogged) { navigation.navigate('NotRegistered'); } else { navigation.navigate('Feed'); }
   }
 
   return (
@@ -127,11 +127,11 @@ AnimalFeed.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
-  user: PropTypes.isRequired,
+  userIsLogged: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  userIsLogged: Object.entries(state.user).length === 0,
 });
 
 export default connect(mapStateToProps)(AnimalFeed);
