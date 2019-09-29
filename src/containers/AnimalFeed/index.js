@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import ScreenHeader from '../../components/ScreenHeader';
 
@@ -9,118 +10,128 @@ import {
   CategoryDescription, AdoptButton, AdoptText,
 } from './style';
 
-const AnimalFeed = ({ navigation }) => (
-  <>
-    <ScreenHeader title="Bidu" color="#ffd358" iconLeft="arrow-back" iconRight="share" route="Feed" navigation={navigation} />
-    <AnimalPhoto source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/meau-app.appspot.com/o/-LdtxngUS2-V8UuEuipC?alt=media&token=fab66a80-df2b-442c-a579-f069ff2c3323' }} resizeMode="stretch" />
-    <InfoContainer>
-      <Title>Bidu</Title>
-      <InfoRow>
-        <AnimalInfo>
-          <Category>
+const AnimalFeed = ({ navigation, user }) => {
+  function onDonationPress() {
+    if (user) { navigation.navigate('Feed'); } else { navigation.navigate('NotRegistered'); }
+  }
+
+  return (
+    <>
+      <ScreenHeader title="Bidu" color="#ffd358" iconLeft="arrow-back" iconRight="share" route="Feed" navigation={navigation} />
+      <AnimalPhoto source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/meau-app.appspot.com/o/-LdtxngUS2-V8UuEuipC?alt=media&token=fab66a80-df2b-442c-a579-f069ff2c3323' }} resizeMode="stretch" />
+      <InfoContainer>
+        <Title>Bidu</Title>
+        <InfoRow>
+          <AnimalInfo>
+            <Category>
               Sexo
-          </Category>
-          <CategoryDescription>
+            </Category>
+            <CategoryDescription>
             Macho
-          </CategoryDescription>
-        </AnimalInfo>
-        <AnimalInfo>
-          <Category>
+            </CategoryDescription>
+          </AnimalInfo>
+          <AnimalInfo>
+            <Category>
               Porte
-          </Category>
-          <CategoryDescription>
+            </Category>
+            <CategoryDescription>
             Médio
-          </CategoryDescription>
-        </AnimalInfo>
-        <AnimalInfo>
-          <Category>
+            </CategoryDescription>
+          </AnimalInfo>
+          <AnimalInfo>
+            <Category>
             Idade
-          </Category>
-          <CategoryDescription>
+            </Category>
+            <CategoryDescription>
             Adulto
-          </CategoryDescription>
-        </AnimalInfo>
-      </InfoRow>
-      <AnimalInfo>
-        <Category>
+            </CategoryDescription>
+          </AnimalInfo>
+        </InfoRow>
+        <AnimalInfo>
+          <Category>
               Localização
-        </Category>
-        <CategoryDescription>
+          </Category>
+          <CategoryDescription>
             Samambaia Sul - Distrito Federal
-        </CategoryDescription>
-      </AnimalInfo>
-      <InfoRow>
-        <AnimalInfo>
-          <Category>
+          </CategoryDescription>
+        </AnimalInfo>
+        <InfoRow>
+          <AnimalInfo>
+            <Category>
               Castrado
-          </Category>
-          <CategoryDescription>
+            </Category>
+            <CategoryDescription>
             Não
-          </CategoryDescription>
-        </AnimalInfo>
-        <AnimalInfo>
-          <Category>
+            </CategoryDescription>
+          </AnimalInfo>
+          <AnimalInfo>
+            <Category>
               Idade
-          </Category>
-          <CategoryDescription>
+            </Category>
+            <CategoryDescription>
             Adulto
-          </CategoryDescription>
-        </AnimalInfo>
-      </InfoRow>
-      <InfoRow>
-        <AnimalInfo>
-          <Category>
+            </CategoryDescription>
+          </AnimalInfo>
+        </InfoRow>
+        <InfoRow>
+          <AnimalInfo>
+            <Category>
               Vacinado
+            </Category>
+            <CategoryDescription>
+            Não
+            </CategoryDescription>
+          </AnimalInfo>
+          <AnimalInfo>
+            <Category>
+              Doenças
+            </Category>
+            <CategoryDescription>
+            Nenhuma
+            </CategoryDescription>
+          </AnimalInfo>
+        </InfoRow>
+        <AnimalInfo>
+          <Category>
+              Temperamento
           </Category>
           <CategoryDescription>
-            Não
+            Calmo e dócio
           </CategoryDescription>
         </AnimalInfo>
         <AnimalInfo>
           <Category>
-              Doenças
+              Exigências do doador
           </Category>
           <CategoryDescription>
-            Nenhuma
+            Termo de adoção, fotos de casa, visita prévia e acompanhamento durante três meses
           </CategoryDescription>
         </AnimalInfo>
-      </InfoRow>
-      <AnimalInfo>
-        <Category>
-              Temperamento
-        </Category>
-        <CategoryDescription>
-            Calmo e dócio
-        </CategoryDescription>
-      </AnimalInfo>
-      <AnimalInfo>
-        <Category>
-              Exigências do doador
-        </Category>
-        <CategoryDescription>
-            Termo de adoção, fotos de casa, visita prévia e acompanhamento durante três meses
-        </CategoryDescription>
-      </AnimalInfo>
-      <AnimalInfo>
-        <Category>
+        <AnimalInfo>
+          <Category>
               Mais sobre Bidu
-        </Category>
-        <CategoryDescription>
+          </Category>
+          <CategoryDescription>
             Lorem Ipsum
-        </CategoryDescription>
-      </AnimalInfo>
-      <AdoptButton>
-        <AdoptText>Pretendo adotar</AdoptText>
-      </AdoptButton>
-    </InfoContainer>
-  </>
-);
+          </CategoryDescription>
+        </AnimalInfo>
+        <AdoptButton onPress={onDonationPress}>
+          <AdoptText>Pretendo adotar</AdoptText>
+        </AdoptButton>
+      </InfoContainer>
+    </>
+  );
+};
 
 AnimalFeed.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
+  user: PropTypes.isRequired,
 };
 
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
 
-export default AnimalFeed;
+export default connect(mapStateToProps)(AnimalFeed);
