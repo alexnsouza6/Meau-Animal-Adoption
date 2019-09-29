@@ -1,29 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import ScreenHeader from '../ScreenHeader';
 import {
   Container, Title, ButtonContainer, StandardButton, StandardText,
 } from './style';
 
+const text = 'Você não pode realizar esta ação sem\npossuir um cadastro';
+
 const NotRegistered = ({ navigation }) => (
-  <Container>
-    <Title>
+  <>
+    <ScreenHeader title="Cadastro" color="#88c9bf" iconLeft="arrow-back" route="Feed" navigation={navigation} />
+    <Container>
+      <Title>
         Ops!
-    </Title>
-    <ButtonContainer>
-      <StandardText>
-          Você não pode realizer esta ação sem possuir um cadastro
-      </StandardText>
-      <StandardButton onPress={() => navigation.navigate('SignUp')}>
+      </Title>
+      <ButtonContainer>
+        <StandardText>
+          {text}
+        </StandardText>
+        <StandardButton onPress={() => navigation.navigate('SignUp')}>
+          <StandardText>
           Fazer Cadastro
-      </StandardButton>
-      <StandardText>
+          </StandardText>
+        </StandardButton>
+        <StandardText>
           Já possui cadastro?
-      </StandardText>
-      <StandardButton onPress={() => navigation.navigate('Login')}>
+        </StandardText>
+        <StandardButton onPress={() => navigation.navigate('Login')}>
+          <StandardText>
           Fazer login
-      </StandardButton>
-    </ButtonContainer>
-  </Container>
+          </StandardText>
+        </StandardButton>
+      </ButtonContainer>
+    </Container>
+  </>
 );
 
 NotRegistered.propTypes = {
