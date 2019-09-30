@@ -92,7 +92,6 @@ export const TxtInput = styled.TextInput`
 `;
 
 export const CheckboxContainer = {
-  backgroundColor: 'white',
   borderWidth: 0,
   marginLeft: 0,
   marginRight: 12,
@@ -107,15 +106,20 @@ export const CheckboxText = {
   padding: 0,
 };
 
+export const VisitTimeText = {
+  fontFamily: 'Roboto',
+  fontSize: 14,
+  color: '#bdbdbd',
+};
+
 export const ImageButtonStyle = {
   backgroundColor: '#f1f2f2',
 };
 
-// export const TitleText = {
-//   marginLeft: 5,
-//   fontSize: 20,
-//   fontWeight: bold,
-// };
+export const VisitTimeContainer = styled.View`
+    marginHorizontal: 24;
+`;
+
 
 export const BtnContainer = styled.View`
     justifyContent: center;

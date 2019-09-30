@@ -8,12 +8,11 @@ import {
 } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Feather';
 
-import reactotron from 'reactotron-react-native';
 import {
   Column, Row, BodyContainer, BaseText, ScrollContainer, AdoptButton,
   HelpButton, PatronizeButton, TopButtonsContainer, AdoptionText, SectionText, TxtInput,
-  CheckboxContainer, ImageButton, AdoptionBtn, ImageButtonStyle,
-  CheckboxText, BtnContainer, PatronizeText, AdoptionButtonText,
+  CheckboxContainer, ImageButton, AdoptionBtn, ImageButtonStyle, VisitTimeContainer,
+  CheckboxText, BtnContainer, PatronizeText, AdoptionButtonText, VisitTimeText,
 } from './style';
 
 class PetRegister extends React.Component {
@@ -34,7 +33,6 @@ class PetRegister extends React.Component {
   handleSubmit = () => {
     const { adoptionReq } = this.state;
     if (!adoptionReq[3]) {
-      reactotron.log('if');
       this.setState({ visit: [false, false, false] });
     }
   }
@@ -389,6 +387,8 @@ class PetRegister extends React.Component {
             </SectionText>
 
             <CheckBox
+              textStyle={CheckboxText}
+              containerStyle={CheckboxContainer}
               title="Termo de adoção"
               checked={adoptionReq[0]}
               onPress={() => this.setState({
@@ -397,6 +397,8 @@ class PetRegister extends React.Component {
               })}
             />
             <CheckBox
+              textStyle={CheckboxText}
+              containerStyle={CheckboxContainer}
               title="Fotos da casa"
               checked={adoptionReq[1]}
               onPress={() => this.setState({
@@ -405,6 +407,8 @@ class PetRegister extends React.Component {
               })}
             />
             <CheckBox
+              textStyle={CheckboxText}
+              containerStyle={CheckboxContainer}
               title="Visita prévia ao animal"
               checked={adoptionReq[2]}
               onPress={() => this.setState({
@@ -413,6 +417,8 @@ class PetRegister extends React.Component {
               })}
             />
             <CheckBox
+              textStyle={CheckboxText}
+              containerStyle={CheckboxContainer}
               title="Acompanhamento pós adoção"
               checked={adoptionReq[3]}
               onPress={() => this.setState({
@@ -422,8 +428,10 @@ class PetRegister extends React.Component {
             />
 
             {adoptionReq[3] ? (
-              <>
+              <VisitTimeContainer>
                 <CheckBox
+                  textStyle={VisitTimeText}
+                  containerStyle={CheckboxContainer}
                   title="1 mês"
                   checked={visit[0]}
                   onPress={() => this.setState({
@@ -432,6 +440,8 @@ class PetRegister extends React.Component {
                   })}
                 />
                 <CheckBox
+                  textStyle={VisitTimeText}
+                  containerStyle={CheckboxContainer}
                   title="3 meses"
                   checked={visit[1]}
                   onPress={() => this.setState({
@@ -440,6 +450,8 @@ class PetRegister extends React.Component {
                   })}
                 />
                 <CheckBox
+                  textStyle={VisitTimeText}
+                  containerStyle={CheckboxContainer}
                   title="6 meses"
                   checked={visit[2]}
                   onPress={() => this.setState({
@@ -447,7 +459,7 @@ class PetRegister extends React.Component {
                       !visit[2]],
                   })}
                 />
-              </>
+              </VisitTimeContainer>
             ) : null}
 
             <SectionText>
