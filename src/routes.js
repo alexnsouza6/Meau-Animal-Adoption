@@ -20,7 +20,7 @@ const Routes = createAppContainer(createSwitchNavigator(
     Main,
     Feed,
     PetRegister,
-    PetFilter
+    PetFilter,
   },
   {
     initialRouteName: 'Main',
