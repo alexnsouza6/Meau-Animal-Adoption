@@ -1,5 +1,4 @@
 import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import {
@@ -42,7 +41,7 @@ const Main = ({ navigation }) => (
       </MenuButton>
     </Menu>
     <LoginButton onPress={() => { navigation.navigate('Login'); }} />
-    <RegisterButton onPress={() => { navigation.navigate('Register'); }} />
+    <RegisterButton onPress={() => { navigation.navigate('SignUp'); }} />
 
     <Logo source={meauImage} />
   </Container>
@@ -53,6 +52,5 @@ Main.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
-
 
 export default Main;

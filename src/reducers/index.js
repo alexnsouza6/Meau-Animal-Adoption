@@ -1,17 +1,11 @@
-import { ADD_PROFILE } from '../actions/types';
+import {
+  combineReducers,
+} from 'redux';
+import userReducer from './UserReducer';
 
-const initialState = {};
+const rootReducer = combineReducers({
+  user: userReducer,
+});
 
-const userReducer = (state = initialState, { type, payload }) => {
-  switch (type) {
-    case ADD_PROFILE:
-      return {
-        state,
-        user: payload,
-      };
-    default:
-      return state;
-  }
-};
 
-export default userReducer;
+export default rootReducer;

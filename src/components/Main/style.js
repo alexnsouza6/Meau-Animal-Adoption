@@ -22,14 +22,14 @@ export const Menu = styled.View`
 export const Title = styled.Text`
     fontSize: 72px;
     color: #ffd358;
-    fontFamily: Courgette;
+    fontFamily: Courgette-Regular;
     paddingTop: ${getStatusBarHeight() + 56}px;
     paddingBottom: 52px;
 `;
 
 export const Description = styled.Text`
     fontSize: 18px;
-    fontFamily: Roboto;
+    fontFamily: Roboto-Regular;
     color: #757575;
     textAlign: center;
 `;
@@ -46,7 +46,7 @@ export const MenuText = styled.Text`
     textAlign: center;
     fontSize: 16px;
     color: #434343;
-    fontFamily: Roboto;
+    fontFamily: Roboto-Regular;
 `;
 
 export const Logo = styled.Image`
@@ -59,7 +59,7 @@ export const LoginButton = styled.Button.attrs({
   color: '#88C9BF',
 })`
     fontSize: 16px;
-    fontFamily: Roboto;
+    fontFamily: Roboto-Regular;
 `;
 
 export const RegisterButton = styled.Button.attrs({
@@ -67,5 +67,5 @@ export const RegisterButton = styled.Button.attrs({
   color: '#88C9BF',
 })`
       fontSize: 16px;
-      fontFamily: Roboto;
+      fontFamily: Roboto-Regular;
   `;

@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+
+import ScreenHeader from '../../components/ScreenHeader';
+
 import {
   Container, FieldText, MenuText,
   InfoText, ScrollContainer,
@@ -16,6 +19,7 @@ const Profile = ({ user, navigation }) => {
 
   return (
     <ScrollContainer>
+      <ScreenHeader title="Registrar" color="#ffd358" navigation={navigation} />
       <Container>
         <InfoText>NOME COMPLETO</InfoText>
         <FieldText>{ fullName }</FieldText>
@@ -47,7 +51,7 @@ const Profile = ({ user, navigation }) => {
                 PÁGINA PRINCIPAL
             </MenuText>
           </NavButton>
-          <NavButton onPress={() => navigation.navigate('Register')}>
+          <NavButton onPress={() => navigation.navigate('SingUp')}>
             <MenuText>
                 EDITAR PERFIL
             </MenuText>
