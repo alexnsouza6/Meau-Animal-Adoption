@@ -9,7 +9,10 @@ import SignUp from './containers/SignUp';
 import Profile from './containers/Profile';
 import FinishProcess from './containers/FinishProcess';
 import Login from './containers/Login';
-import Feed from './containers/Feeds';
+import Feeds from './containers/Feeds';
+import PetRegister from './containers/PetRegister';
+import PetFilter from './containers/PetFilter';
+import SuccessPetRegister from './components/SuccessPetRegister';
 import AnimalFeed from './containers/AnimalFeed';
 
 const Routes = createAppContainer(createDrawerNavigator(
@@ -19,8 +22,11 @@ const Routes = createAppContainer(createDrawerNavigator(
     Profile,
     Login,
     Main,
-    Feed,
     NotRegistered,
+    Feeds,
+    PetRegister,
+    PetFilter,
+    SuccessPetRegister,
     AnimalFeed,
     FinishProcess,
   },

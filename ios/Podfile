@@ -37,6 +37,8 @@ target 'MeauAdoption' do
   pod 'GoogleSignIn', '~> 4.4.0'
 
 
+  pod 'RNGoogleSignin', :path => '../node_modules/react-native-google-signin'
+
   target 'MeauAdoptionTests' do
     inherit! :search_paths
     # Pods for testing
