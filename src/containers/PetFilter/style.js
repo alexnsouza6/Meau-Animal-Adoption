@@ -29,7 +29,7 @@ export const SectionText = styled.Text`
     color: #f7a800;
 `;
 
-export const TopAdoptButton = styled.TouchableOpacity`
+export const TopAdoptButton = styled.View`
     flex: 1;
     justifyContent: center;
     alignItems: center;
@@ -43,7 +43,7 @@ export const TopAdoptButton = styled.TouchableOpacity`
 
 `;
 
-export const TopButton = styled.TouchableOpacity`
+export const TopButton = styled.View`
     flex: 1;
     justifyContent: center;
     alignItems: center;
@@ -56,6 +56,10 @@ export const TopButton = styled.TouchableOpacity`
     shadowRadius: 1; 
     elevation: 2;
 
+`;
+
+export const TopButtonText = styled.Text`
+    color: #bdbdbd;
 `;
 
 export const LeftButton = styled.TouchableOpacity`
@@ -90,6 +94,20 @@ export const CenterButton = styled.TouchableOpacity`
     justifyContent: center;
     alignItems: center;
     backgroundColor: #f1f2f2;
+    height: 40;
+    marginHorizontal: 8;
+    shadowColor: rgba(0,0,0, .4); 
+    shadowOffset: { height: 1, width: 1 }; 
+    shadowOpacity: 1; 
+    shadowRadius: 1; 
+    elevation: 2;
+
+`;
+
+export const MarkedButton = styled.TouchableOpacity`
+    justifyContent: center;
+    alignItems: center;
+    backgroundColor: #ffd358;
     height: 40;
     marginHorizontal: 8;
     shadowColor: rgba(0,0,0, .4); 

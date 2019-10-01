@@ -6,6 +6,8 @@ import {
   Button,
 } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Feather';
+import firestore from '@react-native-firebase/firestore';
+import reactotron from 'reactotron-react-native';
 
 import {
   Column, Row, BodyContainer, BaseText, ScrollContainer, AdoptButton,
@@ -24,22 +26,124 @@ class PetRegister extends React.Component {
     health: [false, false, false, false],
     adoptionReq: [false, false, false, false],
     visit: [false, false, false],
-    petName: '',
+    name: '',
     diseases: '',
     about: '',
   };
 
-  handleSubmit = () => {
-    const { adoptionReq } = this.state;
-    if (!adoptionReq[3]) {
-      this.setState({ visit: [false, false, false] });
+
+  formatData = () => {
+    const {
+      temper, health, adoptionReq, visit, about,
+      name, specie, sex, size, age, diseases,
+    } = this.state;
+
+    const petObject = {
+      name,
+      sex: (sex[0] ? 'MACHO' : 'FEMEA'),
+      specie: (specie[0] ? 'CACHORRO' : 'GATO'),
+      size: '',
+      age: '',
+      health: [],
+      temper: [],
+      visit: [],
+      adoptionReq: [],
+      diseases,
+      about,
+    };
+
+    if (size[0]) {
+      petObject.size = 'PEQUENO';
+    } else if (size[1]) {
+      petObject.size = 'MEDIO';
+    } else {
+      petObject.size = 'GRANDE';
     }
+
+    if (age[0]) {
+      petObject.age = 'FILHOTE';
+    } else if (age[1]) {
+      petObject.age = 'ADULTO';
+    } else {
+      petObject.age = 'IDOSO';
+    }
+
+    if (health[0]) {
+      petObject.health.push('VACINADO');
+    }
+    if (health[1]) {
+      petObject.health.push('VERMIFUGADO');
+    }
+    if (health[2]) {
+      petObject.health.push('CASTRADO');
+    }
+    if (health[3]) {
+      petObject.health.push('DOENTE');
+    }
+
+    if (temper[0]) {
+      petObject.temper.push('BRINCALHAO');
+    }
+    if (temper[1]) {
+      petObject.temper.push('TIMIDO');
+    }
+    if (temper[2]) {
+      petObject.temper.push('CALMO');
+    }
+    if (temper[3]) {
+      petObject.temper.push('GUARDA');
+    }
+    if (temper[4]) {
+      petObject.temper.push('AMOROSO');
+    }
+    if (temper[5]) {
+      petObject.temper.push('PREGUIÇOSO');
+    }
+
+    if (visit[0]) {
+      petObject.visit.push('1 MES');
+    }
+    if (visit[1]) {
+      petObject.visit.push('3 MESES');
+    }
+    if (visit[2]) {
+      petObject.visit.push('6 MESES');
+    }
+
+    if (adoptionReq[0]) {
+      petObject.adoptionReq.push('Termo de adoção');
+    }
+    if (adoptionReq[1]) {
+      petObject.adoptionReq.push('Fotos da casa');
+    }
+    if (adoptionReq[2]) {
+      petObject.adoptionReq.push('Visita prévia ao animal');
+    }
+    if (adoptionReq[3]) {
+      petObject.adoptionReq.push('Acompanhamento pós-adoção');
+    }
+
+    return petObject;
+  }
+
+  handleSubmit = async () => {
+    const { adoptionReq } = this.state;
+
+    if (!adoptionReq[3]) {
+      await this.setState({ visit: [false, false, false] });
+    }
+
+    const petObject = this.formatData();
+    reactotron.log(petObject);
+
+    const petRef = firestore().collection('pets');
+    await petRef.add(petObject);
   }
 
   render() {
     const {
       temper, health, adoptionReq, visit, about,
-      petName, specie, sex, size, age, diseases,
+      name, specie, sex, size, age, diseases,
     } = this.state;
     return (
       <>
@@ -74,8 +178,8 @@ class PetRegister extends React.Component {
             </SectionText>
 
             <TxtInput
-              onChangeText={(petName) => this.setState({ petName })}
-              value={petName}
+              onChangeText={(name) => this.setState({ name })}
+              value={name}
               placeholder="Nome do animal"
             />
 

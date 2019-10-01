@@ -8,7 +8,7 @@ import {
 import reactotron from 'reactotron-react-native';
 import {
   Column, Row, BodyContainer, SectionText, TopButtonsContainer, TopAdoptButton,
-  TopButton, LeftButton, RightButton, CenterButton, SearchButtonText,
+  TopButton, TopButtonText, LeftButton, RightButton, CenterButton, MarkedButton, SearchButtonText,
   SearchButton, TextInput, SearchButtonContainer,
 } from './style';
 import { ScrollContainer } from '../PetRegister/style';
@@ -22,7 +22,6 @@ class PetFilter extends React.Component {
     cityState: '',
     city: '',
     nameSearch: '',
-
   };
 
   handleSubmit = () => {
@@ -36,7 +35,7 @@ class PetFilter extends React.Component {
         aux[index] = !aux[index];
       }
     }
-    this.setState({ array: aux });
+    return aux;
   }
 
   render() {
@@ -59,11 +58,11 @@ class PetFilter extends React.Component {
                 </TopAdoptButton>
 
                 <TopButton>
-                  <Text>AJUDAR</Text>
+                  <TopButtonText>AJUDAR</TopButtonText>
                 </TopButton>
 
                 <TopButton>
-                  <Text>APADRINHAR</Text>
+                  <TopButtonText>APADRINHAR</TopButtonText>
                 </TopButton>
 
               </TopButtonsContainer>
@@ -74,14 +73,42 @@ class PetFilter extends React.Component {
 
               <Row>
                 <Column>
-                  <LeftButton onPress={() => this.handlePress(specie, 0)}>
-                    <Text>CACHORRO</Text>
-                  </LeftButton>
+                  {specie[0]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { specie: this.handlePress(specie, 0) },
+                      )}
+                      >
+                        <Text>CACHORRO</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <LeftButton onPress={() => this.setState(
+                        { specie: this.handlePress(specie, 0) },
+                      )}
+                      >
+                        <Text>CACHORRO</Text>
+                      </LeftButton>
+                    )}
                 </Column>
                 <Column>
-                  <RightButton onPress={() => this.handlePress(specie, 1)}>
-                    <Text>GATO</Text>
-                  </RightButton>
+                  {specie[1]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { specie: this.handlePress(specie, 1) },
+                      )}
+                      >
+                        <Text>GATO</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <RightButton onPress={() => this.setState(
+                        { specie: this.handlePress(specie, 1) },
+                      )}
+                      >
+                        <Text>GATO</Text>
+                      </RightButton>
+                    )}
                 </Column>
               </Row>
 
@@ -91,14 +118,42 @@ class PetFilter extends React.Component {
 
               <Row>
                 <Column>
-                  <LeftButton onPress={() => this.handlePress(sex, 0)}>
-                    <Text>MACHO</Text>
-                  </LeftButton>
+                  {sex[0]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { sex: this.handlePress(sex, 0) },
+                      )}
+                      >
+                        <Text>MACHO</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <LeftButton onPress={() => this.setState(
+                        { sex: this.handlePress(sex, 0) },
+                      )}
+                      >
+                        <Text>MACHO</Text>
+                      </LeftButton>
+                    )}
                 </Column>
                 <Column>
-                  <RightButton onPress={() => this.handlePress(sex, 1)}>
-                    <Text>FEMEA</Text>
-                  </RightButton>
+                  {sex[1]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { sex: this.handlePress(sex, 1) },
+                      )}
+                      >
+                        <Text>FÊMEA</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <RightButton onPress={() => this.setState(
+                        { sex: this.handlePress(sex, 1) },
+                      )}
+                      >
+                        <Text>FÊMEA</Text>
+                      </RightButton>
+                    )}
                 </Column>
               </Row>
 
@@ -108,19 +163,61 @@ class PetFilter extends React.Component {
 
               <Row>
                 <Column>
-                  <LeftButton onPress={() => this.handlePress(age, 0)}>
-                    <Text>FILHOTE</Text>
-                  </LeftButton>
+                  {age[0]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { age: this.handlePress(age, 0) },
+                      )}
+                      >
+                        <Text>FILHOTE</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <LeftButton onPress={() => this.setState(
+                        { age: this.handlePress(age, 0) },
+                      )}
+                      >
+                        <Text>FILHOTE</Text>
+                      </LeftButton>
+                    )}
                 </Column>
                 <Column>
-                  <CenterButton onPress={() => this.handlePress(age, 1)}>
-                    <Text>ADULTO</Text>
-                  </CenterButton>
+                  {age[1]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { age: this.handlePress(age, 1) },
+                      )}
+                      >
+                        <Text>ADULTO</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <CenterButton onPress={() => this.setState(
+                        { age: this.handlePress(age, 1) },
+                      )}
+                      >
+                        <Text>ADULTO</Text>
+                      </CenterButton>
+                    )}
                 </Column>
                 <Column>
-                  <RightButton onPress={() => this.handlePress(age, 2)}>
-                    <Text>IDOSO</Text>
-                  </RightButton>
+                  {age[2]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { age: this.handlePress(age, 2) },
+                      )}
+                      >
+                        <Text>IDOSO</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <RightButton onPress={() => this.setState(
+                        { age: this.handlePress(age, 2) },
+                      )}
+                      >
+                        <Text>IDOSO</Text>
+                      </RightButton>
+                    )}
                 </Column>
               </Row>
 
@@ -130,19 +227,61 @@ class PetFilter extends React.Component {
 
               <Row>
                 <Column>
-                  <LeftButton onPress={() => this.handlePress(size, 0)}>
-                    <Text>PEQUENO</Text>
-                  </LeftButton>
+                  {size[0]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { size: this.handlePress(size, 0) },
+                      )}
+                      >
+                        <Text>PEQUENO</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <LeftButton onPress={() => this.setState(
+                        { size: this.handlePress(size, 0) },
+                      )}
+                      >
+                        <Text>PEQUENO</Text>
+                      </LeftButton>
+                    )}
                 </Column>
                 <Column>
-                  <CenterButton onPress={() => this.handlePress(size, 1)}>
-                    <Text>MÉDIO</Text>
-                  </CenterButton>
+                  {size[1]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { size: this.handlePress(size, 1) },
+                      )}
+                      >
+                        <Text>MÉDIO</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <CenterButton onPress={() => this.setState(
+                        { size: this.handlePress(size, 1) },
+                      )}
+                      >
+                        <Text>MÉDIO</Text>
+                      </CenterButton>
+                    )}
                 </Column>
                 <Column>
-                  <RightButton onPress={() => this.handlePress(size, 2)}>
-                    <Text>GRANDE</Text>
-                  </RightButton>
+                  {size[2]
+                    ? (
+                      <MarkedButton onPress={() => this.setState(
+                        { size: this.handlePress(size, 2) },
+                      )}
+                      >
+                        <Text>GRANDE</Text>
+                      </MarkedButton>
+                    )
+                    : (
+                      <RightButton onPress={() => this.setState(
+                        { size: this.handlePress(size, 2) },
+                      )}
+                      >
+                        <Text>GRANDE</Text>
+                      </RightButton>
+                    )}
                 </Column>
               </Row>
 
