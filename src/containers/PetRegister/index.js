@@ -3,7 +3,6 @@ import { StatusBar, Text } from 'react-native';
 
 import {
   CheckBox,
-  Header,
   Button,
 } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Feather';
@@ -45,12 +44,6 @@ class PetRegister extends React.Component {
     return (
       <>
         <StatusBar backgroundColor="#f7a800" />
-        <Header
-          backgroundColor="#ffd358"
-          placement="left"
-          leftComponent={{ icon: 'arrow-back', color: '#434343' }}
-          centerComponent={{ text: 'Cadastro do Animal', style: { color: '#434343', fontSize: 20 } }}
-        />
         <BodyContainer>
           <ScrollContainer>
             <BaseText>
