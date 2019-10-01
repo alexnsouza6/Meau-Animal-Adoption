@@ -5,6 +5,7 @@ import {
   CheckBox,
   Button,
 } from 'react-native-elements';
+import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Feather';
 import firestore from '@react-native-firebase/firestore';
 import reactotron from 'reactotron-react-native';
@@ -128,6 +129,7 @@ class PetRegister extends React.Component {
 
   handleSubmit = async () => {
     const { adoptionReq } = this.state;
+    const { navigation } = this.props;
 
     if (!adoptionReq[3]) {
       await this.setState({ visit: [false, false, false] });
@@ -138,6 +140,7 @@ class PetRegister extends React.Component {
 
     const petRef = firestore().collection('pets');
     await petRef.add(petObject);
+    navigation.navigate('SuccessPetRegister');
   }
 
   render() {
@@ -581,5 +584,11 @@ class PetRegister extends React.Component {
     );
   }
 }
+
+PetRegister.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default PetRegister;
