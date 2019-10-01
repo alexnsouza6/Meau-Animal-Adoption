@@ -7,9 +7,9 @@ import {
 
 import reactotron from 'reactotron-react-native';
 import {
-  Column, Row, BodyContainer, BaseText, TopButtonsContainer, AdoptButton,
-  HelpButton, LeftBtn, RightBtn, CenterBtn, AdoptionButtonText,
-  AdoptionBtn, TxtInput, BtnContainer,
+  Column, Row, BodyContainer, SectionText, TopButtonsContainer, TopAdoptButton,
+  TopButton, LeftButton, RightButton, CenterButton, SearchButtonText,
+  SearchButton, TextInput, SearchButtonContainer,
 } from './style';
 import { ScrollContainer } from '../PetRegister/style';
 
@@ -36,7 +36,6 @@ class PetFilter extends React.Component {
         aux[index] = !aux[index];
       }
     }
-    // reactotron.log(array);
     this.setState({ array: aux });
   }
 
@@ -50,135 +49,135 @@ class PetFilter extends React.Component {
         <SafeAreaView>
           <BodyContainer>
             <ScrollContainer>
-              <BaseText>
+              <SectionText>
                SEU INTERESSE
-              </BaseText>
+              </SectionText>
               <TopButtonsContainer>
 
-                <AdoptButton>
+                <TopAdoptButton>
                   <Text>ADOTAR</Text>
-                </AdoptButton>
+                </TopAdoptButton>
 
-                <HelpButton>
+                <TopButton>
                   <Text>AJUDAR</Text>
-                </HelpButton>
+                </TopButton>
 
-                <HelpButton>
+                <TopButton>
                   <Text>APADRINHAR</Text>
-                </HelpButton>
+                </TopButton>
 
               </TopButtonsContainer>
 
-              <BaseText>
+              <SectionText>
                 ESPÉCIE
-              </BaseText>
+              </SectionText>
 
               <Row>
                 <Column>
-                  <LeftBtn onPress={() => this.handlePress(specie, 0)}>
+                  <LeftButton onPress={() => this.handlePress(specie, 0)}>
                     <Text>CACHORRO</Text>
-                  </LeftBtn>
+                  </LeftButton>
                 </Column>
                 <Column>
-                  <RightBtn onPress={() => this.handlePress(specie, 1)}>
+                  <RightButton onPress={() => this.handlePress(specie, 1)}>
                     <Text>GATO</Text>
-                  </RightBtn>
+                  </RightButton>
                 </Column>
               </Row>
 
-              <BaseText>
+              <SectionText>
                 SEXO
-              </BaseText>
+              </SectionText>
 
               <Row>
                 <Column>
-                  <LeftBtn onPress={() => this.handlePress(sex, 0)}>
+                  <LeftButton onPress={() => this.handlePress(sex, 0)}>
                     <Text>MACHO</Text>
-                  </LeftBtn>
+                  </LeftButton>
                 </Column>
                 <Column>
-                  <RightBtn onPress={() => this.handlePress(sex, 1)}>
+                  <RightButton onPress={() => this.handlePress(sex, 1)}>
                     <Text>FEMEA</Text>
-                  </RightBtn>
+                  </RightButton>
                 </Column>
               </Row>
 
-              <BaseText>
+              <SectionText>
                 IDADE
-              </BaseText>
+              </SectionText>
 
               <Row>
                 <Column>
-                  <LeftBtn onPress={() => this.handlePress(age, 0)}>
+                  <LeftButton onPress={() => this.handlePress(age, 0)}>
                     <Text>FILHOTE</Text>
-                  </LeftBtn>
+                  </LeftButton>
                 </Column>
                 <Column>
-                  <CenterBtn onPress={() => this.handlePress(age, 1)}>
+                  <CenterButton onPress={() => this.handlePress(age, 1)}>
                     <Text>ADULTO</Text>
-                  </CenterBtn>
+                  </CenterButton>
                 </Column>
                 <Column>
-                  <RightBtn onPress={() => this.handlePress(age, 2)}>
+                  <RightButton onPress={() => this.handlePress(age, 2)}>
                     <Text>IDOSO</Text>
-                  </RightBtn>
+                  </RightButton>
                 </Column>
               </Row>
 
-              <BaseText>
+              <SectionText>
                 PORTE
-              </BaseText>
+              </SectionText>
 
               <Row>
                 <Column>
-                  <LeftBtn onPress={() => this.handlePress(size, 0)}>
+                  <LeftButton onPress={() => this.handlePress(size, 0)}>
                     <Text>PEQUENO</Text>
-                  </LeftBtn>
+                  </LeftButton>
                 </Column>
                 <Column>
-                  <CenterBtn onPress={() => this.handlePress(size, 1)}>
+                  <CenterButton onPress={() => this.handlePress(size, 1)}>
                     <Text>MÉDIO</Text>
-                  </CenterBtn>
+                  </CenterButton>
                 </Column>
                 <Column>
-                  <RightBtn onPress={() => this.handlePress(size, 2)}>
+                  <RightButton onPress={() => this.handlePress(size, 2)}>
                     <Text>GRANDE</Text>
-                  </RightBtn>
+                  </RightButton>
                 </Column>
               </Row>
 
-              <BaseText>
+              <SectionText>
                 LOCALIZAÇÃO
-              </BaseText>
+              </SectionText>
 
-              <TxtInput
+              <TextInput
                 onChangeText={(cityState) => this.setState({ cityState })}
                 value={cityState}
                 placeholder="Estado"
               />
 
-              <TxtInput
+              <TextInput
                 onChangeText={(city) => this.setState({ city })}
                 value={city}
                 placeholder="Cidade"
               />
 
-              <BaseText>
+              <SectionText>
                 PESQUISA POR NOME
-              </BaseText>
+              </SectionText>
 
 
-              <TxtInput
+              <TextInput
                 onChangeText={(nameSearch) => this.setState({ nameSearch })}
                 value={nameSearch}
                 placeholder="Nome do pet ou usuário"
               />
 
-              <BtnContainer>
-                <AdoptionBtn onPress={this.handleSubmit}>
-                  <AdoptionButtonText>FAZER PESQUISA</AdoptionButtonText>
-                </AdoptionBtn>
-              </BtnContainer>
+              <SearchButtonContainer>
+                <SearchButton onPress={this.handleSubmit}>
+                  <SearchButtonText>FAZER PESQUISA</SearchButtonText>
+                </SearchButton>
+              </SearchButtonContainer>
 
             </ScrollContainer>
           </BodyContainer>

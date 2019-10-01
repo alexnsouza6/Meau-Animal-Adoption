@@ -10,14 +10,18 @@ export const Row = styled.View`
     justifyContent: space-between;  
 `;
 
-
 export const BodyContainer = styled.View`
     marginHorizontal: 24;
     justifyContent: center;
     flexDirection: row;
 `;
 
-export const BaseText = styled.Text`
+export const TopButtonsContainer = styled.View`
+    justifyContent: center;
+    flexDirection: row;
+`;
+
+export const SectionText = styled.Text`
     textAlign: center;
     fontSize: 14;
     marginTop: 20;
@@ -25,98 +29,7 @@ export const BaseText = styled.Text`
     color: #f7a800;
 `;
 
-export const LeftBtn = styled.TouchableOpacity`
-    justifyContent: center;
-    alignItems: center;
-    backgroundColor: #f1f2f2;
-    height: 40;
-    marginRight: 8;
-    shadowColor: rgba(0,0,0, .4); 
-    shadowOffset: { height: 1, width: 1 }; 
-    shadowOpacity: 1; 
-    shadowRadius: 1; 
-    elevation: 2;
-
-`;
-
-export const RightBtn = styled.TouchableOpacity`
-    justifyContent: center;
-    alignItems: center;
-    backgroundColor: #f1f2f2;
-    height: 40;
-    marginLeft: 8;
-    shadowColor: rgba(0,0,0, .4); 
-    shadowOffset: { height: 1, width: 1 }; 
-    shadowOpacity: 1; 
-    shadowRadius: 1; 
-    elevation: 2;
-
-`;
-
-export const CenterBtn = styled.TouchableOpacity`
-    justifyContent: center;
-    alignItems: center;
-    backgroundColor: #f1f2f2;
-    height: 40;
-    marginHorizontal: 8;
-    shadowColor: rgba(0,0,0, .4); 
-    shadowOffset: { height: 1, width: 1 }; 
-    shadowOpacity: 1; 
-    shadowRadius: 1; 
-    elevation: 2;
-
-`;
-
-export const TxtInput = styled.TextInput`
-    height: 40;
-    borderBottomColor: #bdbdbd;
-    borderBottomWidth: 1;
-    marginVertical: 0;
-
-`;
-
-export const CheckboxContainer = {
-  backgroundColor: 'white',
-  borderWidth: 0,
-  marginLeft: 0,
-  marginRight: 12,
-  marginTop: 0,
-  padding: 0,
-};
-
-export const CheckboxText = {
-  color: '#757575',
-  fontSize: 14,
-  marginLeft: 0,
-  padding: 0,
-};
-
-export const TitleText = {
-  marginLeft: 5,
-  fontSize: 20,
-  fontWeight: 'bold',
-};
-
-export const BtnContainer = styled.View`
-    justifyContent: center;
-    alignItems: center;
-    marginVertical: 24;
-`;
-
-export const BtnStyle = styled.View`
-    height: 40;
-    width: 100;
-    fontSize: 12;
-`;
-
-export const LabelText = styled.Text`
-    fontSize: 12;
-    color: #f7a800;
-    marginTop: 20;
-    marginBottom: 16;
-`;
-
-export const AdoptButton = styled.TouchableOpacity`
+export const TopAdoptButton = styled.TouchableOpacity`
     flex: 1;
     justifyContent: center;
     alignItems: center;
@@ -130,8 +43,7 @@ export const AdoptButton = styled.TouchableOpacity`
 
 `;
 
-
-export const HelpButton = styled.TouchableOpacity`
+export const TopButton = styled.TouchableOpacity`
     flex: 1;
     justifyContent: center;
     alignItems: center;
@@ -146,13 +58,53 @@ export const HelpButton = styled.TouchableOpacity`
 
 `;
 
-export const TopButtonsContainer = styled.View`
+export const LeftButton = styled.TouchableOpacity`
     justifyContent: center;
-    flexDirection: row;
+    alignItems: center;
+    backgroundColor: #f1f2f2;
+    height: 40;
+    marginRight: 8;
+    shadowColor: rgba(0,0,0, .4); 
+    shadowOffset: { height: 1, width: 1 }; 
+    shadowOpacity: 1; 
+    shadowRadius: 1; 
+    elevation: 2;
+
 `;
 
+export const RightButton = styled.TouchableOpacity`
+    justifyContent: center;
+    alignItems: center;
+    backgroundColor: #f1f2f2;
+    height: 40;
+    marginLeft: 8;
+    shadowColor: rgba(0,0,0, .4); 
+    shadowOffset: { height: 1, width: 1 }; 
+    shadowOpacity: 1; 
+    shadowRadius: 1; 
+    elevation: 2;
 
-export const AdoptionBtn = styled.TouchableOpacity`
+`;
+
+export const CenterButton = styled.TouchableOpacity`
+    justifyContent: center;
+    alignItems: center;
+    backgroundColor: #f1f2f2;
+    height: 40;
+    marginHorizontal: 8;
+    shadowColor: rgba(0,0,0, .4); 
+    shadowOffset: { height: 1, width: 1 }; 
+    shadowOpacity: 1; 
+    shadowRadius: 1; 
+    elevation: 2;
+
+`;
+
+export const SearchButtonText = styled.Text`
+    color: #434343;
+`;
+
+export const SearchButton = styled.TouchableOpacity`
     height: 40;
     width: 232;
     fontSize: 12;
@@ -166,6 +118,16 @@ export const AdoptionBtn = styled.TouchableOpacity`
     elevation: 2;
 `;
 
-export const AdoptionButtonText = styled.Text`
-    color: #434343;
+export const TextInput = styled.TextInput`
+    height: 40;
+    borderBottomColor: #bdbdbd;
+    borderBottomWidth: 1;
+    marginVertical: 0;
+
+`;
+
+export const SearchButtonContainer = styled.View`
+    justifyContent: center;
+    alignItems: center;
+    marginVertical: 24;
 `;
