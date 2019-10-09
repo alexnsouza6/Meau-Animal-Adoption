@@ -4,8 +4,10 @@ import SideMenu from './components/SideMenu';
 
 import Main from './components/Main';
 import Loading from './components/Loading';
+import NotRegistered from './components/NotRegistered';
 import SignUp from './containers/SignUp';
 import Profile from './containers/Profile';
+import FinishProcess from './containers/FinishProcess';
 import Login from './containers/Login';
 import Feeds from './containers/Feeds';
 import PetRegister from './containers/PetRegister';
@@ -20,11 +22,13 @@ const Routes = createAppContainer(createDrawerNavigator(
     Profile,
     Login,
     Main,
+    NotRegistered,
     Feeds,
     PetRegister,
     PetFilter,
     SuccessPetRegister,
     AnimalFeed,
+    FinishProcess,
   },
   {
     contentComponent: SideMenu,

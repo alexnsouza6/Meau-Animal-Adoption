@@ -2,7 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import reactotron from 'reactotron-react-native';
+import { Text } from 'react-native';
 import ScreenHeader from '../../components/ScreenHeader';
+
 
 import {
   AnimalPhoto, InfoContainer, Title,
@@ -10,24 +13,40 @@ import {
   CategoryDescription, AdoptButton, AdoptText,
 } from './style';
 
-const AnimalFeed = ({ navigation, user }) => {
+const AnimalFeed = ({ navigation, userIsLogged }) => {
   function onDonationPress() {
-    if (user) { navigation.navigate('Feed'); } else { navigation.navigate('NotRegistered'); }
+    if (userIsLogged) { navigation.navigate('NotRegistered'); } else { navigation.navigate('Feed'); }
+  }
+  const {
+    // eslint-disable-next-line react/prop-types
+    age, visit, health, diseases, name, about, sex, temper, size, adoptionReq,
+  // eslint-disable-next-line react/prop-types
+  } = navigation.state.params.pet;
+
+
+  function formatString(array) {
+    let fullString = '';
+    // eslint-disable-next-line react/prop-types
+    array.forEach((element) => {
+      fullString += ` ${element}, `;
+    });
+
+    return fullString.substring(0, fullString.length - 2);
   }
 
   return (
     <>
-      <ScreenHeader title="Bidu" color="#ffd358" iconLeft="arrow-back" iconRight="share" route="Feed" navigation={navigation} />
+      <ScreenHeader title={name} color="#ffd358" iconLeft="arrow-back" iconRight="share" route="Feed" navigation={navigation} />
       <AnimalPhoto source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/meau-app.appspot.com/o/-LdtxngUS2-V8UuEuipC?alt=media&token=fab66a80-df2b-442c-a579-f069ff2c3323' }} resizeMode="stretch" />
       <InfoContainer>
-        <Title>Bidu</Title>
+        <Title>{name}</Title>
         <InfoRow>
           <AnimalInfo>
             <Category>
               Sexo
             </Category>
             <CategoryDescription>
-            Macho
+              {sex}
             </CategoryDescription>
           </AnimalInfo>
           <AnimalInfo>
@@ -35,7 +54,7 @@ const AnimalFeed = ({ navigation, user }) => {
               Porte
             </Category>
             <CategoryDescription>
-            Médio
+              {size}
             </CategoryDescription>
           </AnimalInfo>
           <AnimalInfo>
@@ -43,7 +62,7 @@ const AnimalFeed = ({ navigation, user }) => {
             Idade
             </Category>
             <CategoryDescription>
-            Adulto
+              {age}
             </CategoryDescription>
           </AnimalInfo>
         </InfoRow>
@@ -61,15 +80,15 @@ const AnimalFeed = ({ navigation, user }) => {
               Castrado
             </Category>
             <CategoryDescription>
-            Não
+              { health.filter((item) => item === 'CASTRADO').length ? <Text>Sim</Text> : <Text>Não</Text> }
             </CategoryDescription>
           </AnimalInfo>
           <AnimalInfo>
             <Category>
-              Idade
+              Vermifugado
             </Category>
             <CategoryDescription>
-            Adulto
+              { health.filter((item) => item === 'VERMIFUGADO').length ? <Text>Sim</Text> : <Text>Não</Text> }
             </CategoryDescription>
           </AnimalInfo>
         </InfoRow>
@@ -79,7 +98,7 @@ const AnimalFeed = ({ navigation, user }) => {
               Vacinado
             </Category>
             <CategoryDescription>
-            Não
+              { health.filter((item) => item === 'VACINADO').length ? <Text>Sim</Text> : <Text>Não</Text> }
             </CategoryDescription>
           </AnimalInfo>
           <AnimalInfo>
@@ -87,7 +106,7 @@ const AnimalFeed = ({ navigation, user }) => {
               Doenças
             </Category>
             <CategoryDescription>
-            Nenhuma
+              { diseases ? <Text>{diseases}</Text> : <Text>Nenhuma</Text> }
             </CategoryDescription>
           </AnimalInfo>
         </InfoRow>
@@ -96,7 +115,7 @@ const AnimalFeed = ({ navigation, user }) => {
               Temperamento
           </Category>
           <CategoryDescription>
-            Calmo e dócio
+            { temper ? <Text>{formatString(temper)}</Text> : <Text>Não especificado</Text> }
           </CategoryDescription>
         </AnimalInfo>
         <AnimalInfo>
@@ -104,7 +123,14 @@ const AnimalFeed = ({ navigation, user }) => {
               Exigências do doador
           </Category>
           <CategoryDescription>
-            Termo de adoção, fotos de casa, visita prévia e acompanhamento durante três meses
+            { adoptionReq
+              ? (
+                <Text>
+                  {formatString(adoptionReq)},
+                  acompanhamento durante {formatString(visit).toLowerCase()}
+                </Text>
+              )
+              : <Text>Não especificado</Text>}
           </CategoryDescription>
         </AnimalInfo>
         <AnimalInfo>
@@ -112,7 +138,7 @@ const AnimalFeed = ({ navigation, user }) => {
               Mais sobre Bidu
           </Category>
           <CategoryDescription>
-            Lorem Ipsum
+            {about}
           </CategoryDescription>
         </AnimalInfo>
         <AdoptButton onPress={onDonationPress}>
@@ -127,11 +153,11 @@ AnimalFeed.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
-  user: PropTypes.isRequired,
+  userIsLogged: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({
-  user: state.user,
+  userIsLogged: Object.entries(state.user).length === 0,
 });
 
 export default connect(mapStateToProps)(AnimalFeed);

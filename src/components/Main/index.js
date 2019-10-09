@@ -19,7 +19,7 @@ const Main = ({ navigation }) => (
       <Description>Qual o seu interesse?</Description>
     </DescriptionContainer>
     <Menu>
-      <MenuButton onPress={() => { navigation.navigate('Feed'); }}>
+      <MenuButton onPress={() => { navigation.navigate('Feeds'); }}>
         <MenuText>
           ADOTAR
         </MenuText>

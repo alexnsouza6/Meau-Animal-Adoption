@@ -3,7 +3,8 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   alignItems: center;
-  justifyContent: center;
+  justifyContent: space-around;
+  marginTop: 52;
 `;
 
 export const Title = styled.Text`
@@ -13,13 +14,13 @@ export const Title = styled.Text`
 `;
 
 export const StandardText = styled.Text`
-  fontSize: 12;
-  color: #Roboto;
+  fontSize: 18;
+  color: #757575;
+  textAlign: center;
   fontFamily: Roboto;
 `;
 
 export const ButtonContainer = styled.View`
-  flex: 1;
   alignItems: center;
   justifyContent: center;
 `;
@@ -27,6 +28,10 @@ export const ButtonContainer = styled.View`
 export const StandardButton = styled.TouchableOpacity`
   width: 232;
   height: 40;
-  border: 2;
-  color: #88c9bf;
+  alignItems: center;
+  justifyContent: center;
+  borderWidth: 2;
+  borderColor: transparent;
+  backgroundColor: #88c9bf;
+  marginBottom: 44;
 `;
