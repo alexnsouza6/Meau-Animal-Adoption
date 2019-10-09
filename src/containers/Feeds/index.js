@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import firestore from '@react-native-firebase/firestore';
+import reactotron from 'reactotron-react-native';
 import {
   FlatList,
 } from 'react-native';

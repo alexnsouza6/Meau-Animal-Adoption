@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 
 import { TouchableOpacity } from 'react-native';
+import reactotron from 'reactotron-react-native';
 import {
   FeedBody, FeedHeader, FeedImage, Info, AnimalName, AnimalInfo, AnimalAddress, Feed,
 } from './style';
@@ -14,7 +15,7 @@ const PetFeed = ({ pet, navigation }) => {
   } = pet;
 
   return (
-    <Feed onPress={() => navigation.navigate('AnimalFeed')}>
+    <Feed onPress={() => navigation.navigate('AnimalFeed', { pet })}>
       <FeedHeader>
         <AnimalName>
           {name}
