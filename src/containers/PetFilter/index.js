@@ -79,18 +79,18 @@ class PetFilter extends React.Component {
     return petsCollection.docs.map((doc) => doc.data());
   }
 
-  handleSubmit = () => {
+  handleFilterSubmit = () => {
     const petObject = this.formatData();
     this.getAllPets().then((petsCollection) => {
       let filteredPets = petsCollection;
       if (petObject.nameSearch) {
-        filteredPets.filter((element) => element.name === petObject.nameSearch);
+        filteredPets = filteredPets.filter((element) => element.name === petObject.nameSearch);
       }
       if (petObject.specie.length === 1) {
-        filteredPets.filter((element) => element.specie === petObject.specie[0]);
+        filteredPets = filteredPets.filter((element) => element.specie === petObject.specie[0]);
       }
       if (petObject.sex.length === 1) {
-        filteredPets.filter((element) => element.sex === petObject.sex[0]);
+        filteredPets = filteredPets.filter((element) => element.sex === petObject.sex[0]);
       }
       if (petObject.age.length > 0 && petObject.age.length < 3) {
         let aux;
@@ -401,7 +401,7 @@ class PetFilter extends React.Component {
               />
 
               <SearchButtonContainer>
-                <SearchButton onPress={this.handleSubmit}>
+                <SearchButton onPress={this.handleFilterSubmit}>
                   <SearchButtonText>FAZER PESQUISA</SearchButtonText>
                 </SearchButton>
               </SearchButtonContainer>
