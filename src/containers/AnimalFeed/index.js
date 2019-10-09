@@ -36,7 +36,7 @@ const AnimalFeed = ({ navigation, userIsLogged }) => {
 
   return (
     <>
-      <ScreenHeader title={name} color="#ffd358" iconLeft="arrow-back" iconRight="share" route="Feed" navigation={navigation} />
+      <ScreenHeader title={name} color="#ffd358" iconLeft="arrow-back" iconRight="share" route="Feeds" navigation={navigation} />
       <AnimalPhoto source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/meau-app.appspot.com/o/-LdtxngUS2-V8UuEuipC?alt=media&token=fab66a80-df2b-442c-a579-f069ff2c3323' }} resizeMode="stretch" />
       <InfoContainer>
         <Title>{name}</Title>

@@ -8,11 +8,17 @@ import { Header, HeaderContainer, HeaderText } from './style';
 
 class ScreenHeader extends React.Component {
   // Structure for the navigatin Drawer
-  handleClick = (route) => {
+  handleMenuClick = (route) => {
     // Props to open/close the drawer
     const { navigation, iconLeft } = this.props;
 
     if (iconLeft === 'menu') { navigation.toggleDrawer(); } else if (iconLeft === 'arrow-back') { navigation.navigate(route); }
+  };
+
+  handleFilterClick = () => {
+    // Props to open/close the drawer
+    const { navigation } = this.props;
+    navigation.navigate('PetFilter');
   };
 
   render() {
@@ -23,12 +29,14 @@ class ScreenHeader extends React.Component {
       <HeaderContainer style={{ backgroundColor: color }}>
         <StatusBar backgroundColor="#f7a800" barStyle="light-content" />
         <Header>
-          <TouchableOpacity onPress={() => this.handleClick(route)}>
+          <TouchableOpacity onPress={() => this.handleMenuClick(route)}>
             <Icon name={iconLeft} size={28} color="#434343" />
           </TouchableOpacity>
           <HeaderText>{ title }</HeaderText>
         </Header>
-        <Icon name={iconRight} size={28} color="#434343" />
+        <TouchableOpacity onPress={() => this.handleFilterClick()}>
+          <Icon name={iconRight} size={28} color="#434343" />
+        </TouchableOpacity>
       </HeaderContainer>
     );
   }

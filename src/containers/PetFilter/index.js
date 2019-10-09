@@ -4,7 +4,7 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
-
+import firestore from '@react-native-firebase/firestore';
 import reactotron from 'reactotron-react-native';
 import {
   Column, Row, BodyContainer, SectionText, TopButtonsContainer, TopAdoptButton,
@@ -24,8 +24,96 @@ class PetFilter extends React.Component {
     nameSearch: '',
   };
 
+  formatData = () => {
+    const {
+      specie, sex, age, size, nameSearch,
+    } = this.state;
+
+    const petObject = {
+      nameSearch,
+      sex: [],
+      specie: [],
+      size: [],
+      age: [],
+    };
+
+    if (size[0]) {
+      petObject.size.push('PEQUENO');
+    }
+    if (size[1]) {
+      petObject.size.push('MEDIO');
+    }
+    if (size[2]) {
+      petObject.size.push('GRANDE');
+    }
+
+    if (age[0]) {
+      petObject.age.push('FILHOTE');
+    }
+    if (age[1]) {
+      petObject.age.push('ADULTO');
+    }
+    if (age[2]) {
+      petObject.age.push('IDOSO');
+    }
+
+    if (specie[0]) {
+      petObject.specie.push('CACHORRO');
+    }
+    if (specie[1]) {
+      petObject.specie.push('GATO');
+    }
+
+    if (sex[0]) {
+      petObject.sex.push('MACHO');
+    }
+    if (sex[1]) {
+      petObject.sex.push('FEMEA');
+    }
+
+    return petObject;
+  }
+
+  getAllPets = async () => {
+    const petsCollection = await firestore().collection('pets').get();
+    return petsCollection.docs.map((doc) => doc.data());
+  }
+
   handleSubmit = () => {
-    reactotron.log(this.state);
+    const petObject = this.formatData();
+    this.getAllPets().then((petsCollection) => {
+      let filteredPets = petsCollection;
+      if (petObject.nameSearch) {
+        filteredPets.filter((element) => element.name === petObject.nameSearch);
+      }
+      if (petObject.specie.length === 1) {
+        filteredPets.filter((element) => element.specie === petObject.specie[0]);
+      }
+      if (petObject.sex.length === 1) {
+        filteredPets.filter((element) => element.sex === petObject.sex[0]);
+      }
+      if (petObject.age.length > 0 && petObject.age.length < 3) {
+        let aux;
+        let filteredPetsAux = [];
+        petObject.age.forEach((element) => {
+          aux = filteredPets;
+          aux = aux.filter((e) => e.age === element);
+          filteredPetsAux = [...filteredPetsAux, aux];
+        });
+        filteredPets = filteredPetsAux;
+      }
+      if (petObject.size.length > 0 && petObject.size.length < 3) {
+        let aux;
+        let filteredPetsAux = [];
+        petObject.size.forEach((element) => {
+          aux = filteredPets;
+          aux = aux.filter((e) => e.size === element);
+          filteredPetsAux = [...filteredPetsAux, aux];
+        });
+        filteredPets = filteredPetsAux;
+      }
+      reactotron.log(filteredPets);
+    });
   }
 
   handlePress = (array, index) => {
