@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
+import { AsyncStorage, View } from 'react-native';
 
 import {
   Container, Title, Description,
@@ -10,8 +11,23 @@ import {
 
 const meauImage = require('../../assets/images/Meau_marca_2.png');
 
-const Main = ({ navigation }) => (
-  <>
+const Main = ({ navigation }) => {
+
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    async function checkLogged() {
+      const userIsLogged = await AsyncStorage.getItem('user');
+      userIsLogged ? setLogged(true) : setLogged(false);
+    }
+    checkLogged();
+  }, []);
+
+  async function checkLoggedUser() {
+    if (logged) { navigation.navigate('PetRegister'); } else { navigation.navigate('NotRegistered'); }
+  }
+
+  return (
     <Container>
       <Title> Olá! </Title>
       <DescriptionContainer>
@@ -20,29 +36,24 @@ const Main = ({ navigation }) => (
         <Description>Qual o seu interesse?</Description>
       </DescriptionContainer>
       <Menu>
-        <MenuButton onPress={() => { navigation.navigate('Feed'); }}>
+        <MenuButton onPress={() => { navigation.navigate('Feeds'); }}>
           <MenuText>
-            ADOTAR
+              ADOTAR
           </MenuText>
         </MenuButton>
-        <MenuButton>
+        <MenuButton onPress={() => { checkLoggedUser(); }}>
           <MenuText>
-            AJUDAR
-          </MenuText>
-        </MenuButton>
-        <MenuButton>
-          <MenuText>
-            CADASTRAR ANIMAL
+              CADASTRAR ANIMAL
           </MenuText>
         </MenuButton>
       </Menu>
-      <LoginButton onPress={() => { navigation.navigate('Login'); }} />
-      <RegisterButton onPress={() => { navigation.navigate('SignUp'); }} />
+      {!logged ? <LoginButton onPress={() => { navigation.navigate('Login'); }} /> : <View />}
+      {!logged ? <RegisterButton onPress={() => { navigation.navigate('SignUp'); }} /> : <View />}
 
       <Logo source={meauImage} />
     </Container>
-  </>
-);
+  );
+};
 
 Main.propTypes = {
   navigation: PropTypes.shape({

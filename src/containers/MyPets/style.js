@@ -10,3 +10,10 @@ export const FeedContainer = styled.ScrollView.attrs({
   marginBottom: 10;
 
 `;
+
+export const Title = styled.Text`
+  fontSize: 53;
+  color: #ffd358;
+  marginBottom: 52;
+  fontFamily: Courgette-Regular;
+`;

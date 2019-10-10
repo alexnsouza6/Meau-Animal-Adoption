@@ -29,19 +29,21 @@ export const InfoText = styled.Text`
 
 export const MenuText = styled.Text`
     textAlign: center;
-    fontSize: 16px;
-    color: #FFFFFF;
+    fontSize: 12px;
+    color: #757575;
     fontFamily: Roboto;
 `;
 
 export const ButtonsView = styled.View`
-    marginTop: 12px;
+    flexDirection: row;
+    marginTop: 32px;
+    marginBottom: 24px;
 `;
 
 export const NavButton = styled.TouchableOpacity`
-    width: 232px;
+    width: 148;
     height: 40px;
-    marginBottom: 12px;
-    justifyContent: center; 
+    marginHorizontal: 8;
+    justifyContent: center;
     backgroundColor: #88C9BF;
 `;

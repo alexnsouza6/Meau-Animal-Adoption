@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { AsyncStorage} from 'react-native';
 import PropTypes from 'prop-types';
 
 import { connect } from 'react-redux';
+import firestore from '@react-native-firebase/firestore';
 
 import ScreenHeader from '../../components/ScreenHeader';
 
@@ -10,50 +12,63 @@ import {
   InfoText, ScrollContainer,
   ButtonsView, NavButton,
 } from './style';
+import reactotron from 'reactotron-react-native';
 
+const Profile = ({ navigation }) => {
 
-const Profile = ({ user, navigation }) => {
-  const {
-    fullName, age, email, cityState, city, address, phone, username,
-  } = user;
+  const [user, setUser] = useState({});
+
+  useEffect(() => {
+    async function getUser() {
+      const user = await AsyncStorage.getItem('user');
+      reactotron.log(user);
+      if (user) {
+        const userInfo = await firestore().collection('users').where('email', '==', user).get();
+        setUser(userInfo.docs[0].data())
+      } else {
+        navigation.navigate('NotRegistered');
+      }
+    }
+    getUser();
+  }, []);
 
   return (
     <ScrollContainer>
-      <ScreenHeader title="Registrar" color="#ffd358" navigation={navigation} />
+      <ScreenHeader iconLeft="arrow-back" title={user.fullName} color="#cfe9e5" navigation={navigation} />
       <Container>
         <InfoText>NOME COMPLETO</InfoText>
-        <FieldText>{ fullName }</FieldText>
+        <FieldText>{ user.fullName }</FieldText>
 
         <InfoText>IDADE</InfoText>
-        <FieldText>{ age }</FieldText>
+        <FieldText>{ user.age }</FieldText>
 
         <InfoText>EMAIL</InfoText>
-        <FieldText>{ email }</FieldText>
+        <FieldText>{ user.email }</FieldText>
 
-        <InfoText>ESTADO</InfoText>
-        <FieldText>{ cityState }</FieldText>
-
-        <InfoText>CIDADE</InfoText>
-        <FieldText>{ city }</FieldText>
+        <InfoText>LOCALIZAÇÃO</InfoText>
+        <FieldText>{user.cityState}-{user.city}</FieldText>
 
         <InfoText>ENDEREÇO</InfoText>
-        <FieldText>{ address }</FieldText>
+        <FieldText>{ user.address }</FieldText>
 
         <InfoText>TELEFONE</InfoText>
-        <FieldText>{ phone }</FieldText>
+        <FieldText>{ user.phone }</FieldText>
 
         <InfoText>NOME DE USUÁRIO</InfoText>
-        <FieldText>{ username }</FieldText>
+        <FieldText>{ user.username }</FieldText>
+
+        <InfoText>HISTÓRICO</InfoText>
+        <FieldText>{user.username}</FieldText>
 
         <ButtonsView>
           <NavButton onPress={() => navigation.navigate('Main')}>
             <MenuText>
-                PÁGINA PRINCIPAL
+              CHAT
             </MenuText>
           </NavButton>
           <NavButton onPress={() => navigation.navigate('SingUp')}>
             <MenuText>
-                EDITAR PERFIL
+              HISTÓRIAS
             </MenuText>
           </NavButton>
         </ButtonsView>
@@ -74,18 +89,18 @@ Profile.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
-  user: PropTypes.shape(
-    {
-      fullName: PropTypes.string,
-      age: PropTypes.string,
-      email: PropTypes.string,
-      cityState: PropTypes.string,
-      city: PropTypes.string,
-      address: PropTypes.string,
-      phone: PropTypes.string,
-      username: PropTypes.string,
-    },
-  ).isRequired,
+  // user: PropTypes.shape(
+  //   {
+  //     fullName: PropTypes.string,
+  //     age: PropTypes.string,
+  //     email: PropTypes.string,
+  //     cityState: PropTypes.string,
+  //     city: PropTypes.string,
+  //     address: PropTypes.string,
+  //     phone: PropTypes.string,
+  //     username: PropTypes.string,
+  //   },
+  // ).isRequired,
 };
 
 export default connect(mapStateToProps)(Profile);
