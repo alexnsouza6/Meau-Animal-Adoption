@@ -5,7 +5,6 @@ import { AsyncStorage, Text } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
 import ScreenHeader from '../../components/ScreenHeader';
 
-
 import {
   AnimalPhoto, InfoContainer, Title,
   InfoRow, AnimalInfo, Category,
@@ -23,8 +22,11 @@ const AnimalFeed = ({ navigation }) => {
     const user = await AsyncStorage.getItem('user');
     if (user) {
       const pet = await firestore().collection('pets').doc(petId).get();
+      const userInfo = await firestore().collection('users').where('email', '==', user).get();
+
       const { interested } = pet.data();
-      interested.push(user);
+      const { fullName } = userInfo.docs[0].data();
+      interested.push({ email: user, fullName });
       await firestore().collection('pets').doc(petId).update({ interested });
       navigation.navigate('Feeds');
     } else {
@@ -35,7 +37,6 @@ const AnimalFeed = ({ navigation }) => {
 
   function formatString(array) {
     let fullString = '';
-    // eslint-disable-next-line react/prop-types
     array.forEach((element) => {
       fullString += ` ${element}, `;
     });
@@ -150,9 +151,13 @@ const AnimalFeed = ({ navigation }) => {
             {about}
           </CategoryDescription>
         </AnimalInfo>
-        <AdoptButton onPress={onAdoptPress}>
-          <AdoptText>Pretendo adotar</AdoptText>
-        </AdoptButton>
+        {route === 'Feeds'
+          ? (
+            <AdoptButton onPress={onAdoptPress}>
+              <AdoptText>Pretendo adotar</AdoptText>
+            </AdoptButton>
+          )
+          : null}
       </InfoContainer>
     </>
   );

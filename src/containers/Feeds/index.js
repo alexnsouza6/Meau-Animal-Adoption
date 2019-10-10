@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import firestore from '@react-native-firebase/firestore';
 import {
-  FlatList,
+  FlatList, AsyncStorage,
 } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
 import reactotron from 'reactotron-react-native';
@@ -23,7 +23,14 @@ const Feeds = ({ navigation }) => {
       const petsCollection = await firestore().collection('pets').get();
       return petsCollection.docs.map((doc) => ({ id: doc.id, object: doc.data() }));
     }
-    getPets().then((pets) => {
+    getPets().then(async (petsCollection) => {
+      const user = await AsyncStorage.getItem('user');
+      let pets = petsCollection.filter((item) => item.object.owner !== user);
+      reactotron.log(pets);
+      pets = pets.filter((item) => {
+        const { interested } = item.object;
+        return interested.filter((item) => !item.email !== user);
+      });
       reactotron.log(pets);
       setPets(pets);
     });
@@ -45,7 +52,7 @@ const Feeds = ({ navigation }) => {
             data={pets}
             extraData={pets}
             renderItem={({ item }) => (
-              <PetFeed pet={item} />
+              <PetFeed pet={item} route="Feeds" />
             )}
           />
         ) : null}
