@@ -31,19 +31,9 @@ const Main = ({ navigation }) => {
               ADOTAR
           </MenuText>
         </MenuButton>
-        <MenuButton>
-          <MenuText>
-              AJUDAR
-          </MenuText>
-        </MenuButton>
         <MenuButton onPress={() => { checkLoggedUser(); }}>
           <MenuText>
               CADASTRAR ANIMAL
-          </MenuText>
-        </MenuButton>
-        <MenuButton onPress={() => { navigation.navigate('PetFilter'); }}>
-          <MenuText>
-              FILTRAR ANIMAL
           </MenuText>
         </MenuButton>
       </Menu>

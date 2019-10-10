@@ -10,7 +10,7 @@ import Icon from 'react-native-vector-icons/Zocial';
 import { GoogleSignin } from 'react-native-google-signin';
 import firebase from '../../config/firebase';
 import {
-  LoginContainer, ErrorText, SignInButton, SignInText, TxtInput, GoogleButton, GoogleText, FacebookButton
+  LoginContainer, ErrorText, SignInButton, SignInText, TxtInput, GoogleButton, GoogleText, FacebookButton,
 } from './style';
 
 import '@react-native-firebase/auth';
@@ -24,7 +24,7 @@ export default class Login extends React.Component {
 
   handleFacebookLogin() {
     LoginManager.logInWithPermissions(['public_profile', 'email', 'user_friends']).then(
-      function (result) {
+      (result) => {
         if (!error && !result.isCancelled) {
           AccessToken.getCurrentAccessToken().then(
             () => {
@@ -33,10 +33,10 @@ export default class Login extends React.Component {
           );
         }
       },
-      function (error) {
-        console.log('Login fail with error: ' + error)
-      }
-    )
+      (error) => {
+        console.log(`Login fail with error: ${error}`);
+      },
+    );
   }
 
   handleLogin = () => {
@@ -103,13 +103,13 @@ export default class Login extends React.Component {
             <SignInText> Entrar </SignInText>
           </SignInButton>
 
-          <GoogleButton onPress={logged ? this.signOut : this.signIn} >
-            <Icon name="googleplus" color="#f7f7f7"/>
+          <GoogleButton onPress={logged ? this.signOut : this.signIn}>
+            <Icon name="googleplus" color="#f7f7f7" />
             <GoogleText> ENTRAR COM GOOGLE </GoogleText>
           </GoogleButton>
 
-          <FacebookButton onPress={logged ? this.signOut : this.handleFacebookLogin} >
-            <Icon name="facebook" color="#f7f7f7"/>
+          <FacebookButton onPress={logged ? this.signOut : this.handleFacebookLogin}>
+            <Icon name="facebook" color="#f7f7f7" />
             <GoogleText> ENTRAR COM FACEBOOK </GoogleText>
           </FacebookButton>
 
