@@ -35,7 +35,7 @@ class ScreenHeader extends React.Component {
           <HeaderText>{ title }</HeaderText>
         </Header>
         <TouchableOpacity onPress={() => this.handleFilterClick()}>
-          <Icon name={iconRight} size={28} color="#434343" />
+          {iconRight ? <Icon name={iconRight} size={28} color="#434343" /> : null}
         </TouchableOpacity>
       </HeaderContainer>
     );
