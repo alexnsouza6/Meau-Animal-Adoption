@@ -1,79 +1,114 @@
 import React, { Component } from 'react';
 import { CheckBox } from 'react-native-elements';
 import PropTypes from 'prop-types';
+import firestore from '@react-native-firebase/firestore';
+import { NavigationEvents } from 'react-navigation';
+import { FlatList, AsyncStorage } from 'react-native';
+import reactotron from 'reactotron-react-native';
 import ScreenHeader from '../../components/ScreenHeader';
 import {
   Container, Title, FinishButton, ButtonText,
 } from './style';
 
-
 class FinishProcess extends Component {
   state = {
-    checked: false,
+    checkedPet: [],
+    checkedUser: [],
+    pets: [],
+    selectedPet: '',
+    selectedUser: '',
+    selectedPetInterest: [],
   }
 
-  onCheckBoxPress = () => {
-    this.setState((prevState) => ({
-      checked: !prevState.checked,
-    }));
+  onCheckPetBoxPress = (index) => {
+    const { checkedPet, pets } = this.state;
+    const auxArray = [];
+    checkedPet.forEach(() => {
+      auxArray.push(false);
+    });
+    auxArray[index] = true;
+    this.setState({ selectedPet: pets[index].id });
+    this.setState({ selectedPetInterest: pets[index].object.interested });
+    this.setState({ checkedPet: auxArray });
+  }
+
+  onCheckUserBoxPress = (index, email) => {
+    const { checkedUser } = this.state;
+    const auxArray = [];
+    checkedUser.forEach(() => {
+      auxArray.push(false);
+    });
+    auxArray[index] = true;
+    this.setState({ selectedUser: email });
+    this.setState({ checkedUser: auxArray });
+  }
+
+  retrieveInterest= async () => {
+    const user = await AsyncStorage.getItem('user');
+    if (user) {
+      const myPetsCollection = await firestore().collection('pets').where('owner', '==', user).get();
+      await this.setState({
+        pets: myPetsCollection.docs.map((doc) => ({ id: doc.id, object: doc.data() })),
+      });
+      const { pets } = this.state;
+      const auxArray = [];
+      pets.forEach(() => auxArray.push(false));
+      this.setState({ checkedPet: auxArray });
+    } else {
+      const { navigation } = this.props;
+      navigation.navigate('NotRegistered');
+    }
+  }
+
+  handleProcess = async () => {
+    const { selectedPet, selectedUser, navigation } = this.state;
+    const petId = selectedPet;
+    reactotron.log(selectedPet);
+    await firestore().collection('pets').doc(petId).update({ owner: selectedUser });
+    navigation.navigate('Main');
   }
 
   render() {
     const { navigation } = this.props;
-    const { checked } = this.state;
+    const {
+      checkedPet, pets, selectedPetInterest, checkedUser,
+    } = this.state;
     return (
       <>
-        <ScreenHeader title="Adotar" color="#ffd358" iconLeft="menu" navigation={navigation} />
+        <NavigationEvents onWillFocus={this.retrieveInterest} />
+        <ScreenHeader title="Finalizar Processo" color="#ffd358" iconLeft="arrow-back" navigation={navigation} />
         <Container>
           <Title> Selecione o(s) animal(is)</Title>
-          <CheckBox
-            onPress={this.onCheckBoxPress}
-            title="Pequi"
-            checked={checked}
+          <FlatList
+            data={pets}
+            extraData={checkedPet}
+            renderItem={({ item, index }) => (
+              <CheckBox
+                onPress={() => { this.onCheckPetBoxPress(index); }}
+                title={item.object.name}
+                checked={checkedPet[index]}
+              />
+            )}
           />
+          <Title>QUAL PROCESSO FOI FORMALIZADO?</Title>
           <CheckBox
-            onPress={this.onCheckBoxPress}
-            title="Bacon"
-            checked={checked}
-          />
-          <Title>Qual processo foi formalizado?</Title>
-          <CheckBox
-            onPress={this.onCheckBoxPress}
             title="Adoção"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={checked}
+            checkedPetIcon="dot-circle-o"
+            checked
           />
-          <CheckBox
-            onPress={this.onCheckBoxPress}
-            title="Apadrinhamento"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={checked}
+          <Title>SELECIONE O USUÁRIO</Title>
+          <FlatList
+            data={selectedPetInterest}
+            extraData={checkedUser}
+            renderItem={({ item, index }) => (
+              <CheckBox
+                onPress={() => { this.onCheckUserBoxPress(index, item.email); }}
+                title={item.fullName}
+                checked={checkedUser[index]}
+              />
+            )}
           />
-          <Title>Selecione o usuário</Title>
-          <CheckBox
-            onPress={this.onCheckBoxPress}
-            title="Ana Luísa"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={checked}
-          />
-          <CheckBox
-            onPress={this.onCheckBoxPress}
-            title="Amanda Teixeira"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={checked}
-          />
-          <CheckBox
-            onPress={this.onCheckBoxPress}
-            title="Elias Rocha"
-            checkedIcon="dot-circle-o"
-            uncheckedIcon="circle-o"
-            checked={checked}
-          />
-          <FinishButton>
+          <FinishButton onPress={this.handleProcess}>
             <ButtonText> Finalizar Processo </ButtonText>
           </FinishButton>
         </Container>

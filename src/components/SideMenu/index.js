@@ -54,6 +54,9 @@ class SideMenu extends Component {
             <NavItem onPress={this.navigateToScreen('#')}>
               <NavItemText>Chat</NavItemText>
             </NavItem>
+            <NavItem onPress={this.navigateToScreen('FinishProcess')}>
+              <NavItemText>Finalizar Processo</NavItemText>
+            </NavItem>
           </NavItemContainer>
 
           <NavPetSection>

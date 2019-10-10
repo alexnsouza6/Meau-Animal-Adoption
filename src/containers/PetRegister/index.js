@@ -8,7 +8,6 @@ import {
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Feather';
 import firestore from '@react-native-firebase/firestore';
-import reactotron from 'reactotron-react-native';
 
 import {
   Column, Row, BodyContainer, BaseText, ScrollContainer, AdoptButton,
