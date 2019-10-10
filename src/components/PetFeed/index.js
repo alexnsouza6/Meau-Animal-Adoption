@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { withNavigation } from 'react-navigation';
 
 import { TouchableOpacity } from 'react-native';
-import reactotron from 'reactotron-react-native';
 import {
   FeedBody, FeedHeader, FeedImage, Info, AnimalName, AnimalInfo, AnimalAddress, Feed,
 } from './style';
@@ -51,7 +50,7 @@ PetFeed.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
-  pet: PropTypes.isRequired,
+  pet: PropTypes.func.isRequired,
 };
 
 export default withNavigation(PetFeed);

@@ -4,6 +4,7 @@ import firestore from '@react-native-firebase/firestore';
 import {
   FlatList,
 } from 'react-native';
+import { NavigationEvents } from 'react-navigation';
 import {
   FeedContainer,
 } from './style';
@@ -27,9 +28,15 @@ const Feeds = ({ navigation }) => {
     });
   }, []);
 
+  function fetchFilteredPets() {
+    if (navigation.state.params) {
+      setPets(navigation.state.params.filteredPets);
+    }
+  }
 
   return (
     <>
+      <NavigationEvents onWillFocus={fetchFilteredPets} />
       <ScreenHeader title="Adotar" color="#ffd358" iconRight="search" iconLeft="menu" navigation={navigation} />
       <FeedContainer>
         {pets.length ? (
@@ -49,6 +56,7 @@ const Feeds = ({ navigation }) => {
 Feeds.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
+    state: PropTypes.func.isRequired,
   }).isRequired,
 };
 

@@ -14,6 +14,7 @@ import PetRegister from './containers/PetRegister';
 import PetFilter from './containers/PetFilter';
 import SuccessPetRegister from './components/SuccessPetRegister';
 import AnimalFeed from './containers/AnimalFeed';
+import FilterFailed from './components/FilterFailed';
 
 const Routes = createAppContainer(createDrawerNavigator(
   {
@@ -27,6 +28,7 @@ const Routes = createAppContainer(createDrawerNavigator(
     PetRegister,
     PetFilter,
     SuccessPetRegister,
+    FilterFailed,
     AnimalFeed,
     FinishProcess,
   },
