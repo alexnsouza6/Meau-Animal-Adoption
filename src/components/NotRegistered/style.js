@@ -10,7 +10,7 @@ export const Container = styled.View`
 export const Title = styled.Text`
   fontSize: 53;
   color: #88c9bf;
-  fontFamily: Courgette;
+  fontFamily: Courgette-Regular;
 `;
 
 export const StandardText = styled.Text`
