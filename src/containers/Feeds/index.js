@@ -5,6 +5,7 @@ import {
   FlatList,
 } from 'react-native';
 import { NavigationEvents } from 'react-navigation';
+import reactotron from 'reactotron-react-native';
 import {
   FeedContainer,
 } from './style';
@@ -20,10 +21,10 @@ const Feeds = ({ navigation }) => {
   useEffect(() => {
     async function getPets() {
       const petsCollection = await firestore().collection('pets').get();
-      return petsCollection.docs.map((doc) => doc.data());
+      return petsCollection.docs.map((doc) => ({ id: doc.id, object: doc.data() }));
     }
-
     getPets().then((pets) => {
+      reactotron.log(pets);
       setPets(pets);
     });
   }, []);

@@ -1,12 +1,17 @@
 import styled from 'styled-components';
 
 export const ScrollContainer = styled.ScrollView.attrs({
+  showsVerticalScrollIndicator: false,
 })`
-    display: flex;
-    marginTop: 10;
-    marginBottom: 10;
-  
-  `;
+  display: flex;
+  flexDirection: column;
+  flex: 1;
+  marginRight: 15;
+  marginLeft: 15;
+  marginBottom: 15;
+  marginTop: 15;
+`;
+
 export const Column = styled.View`
     flexDirection: column;
     flex: 1;

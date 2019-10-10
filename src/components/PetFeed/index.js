@@ -11,7 +11,7 @@ import {
 const PetFeed = ({ pet, navigation }) => {
   const {
     name, age, size, sex,
-  } = pet;
+  } = pet.object;
 
   return (
     <Feed onPress={() => navigation.navigate('AnimalFeed', { pet })}>

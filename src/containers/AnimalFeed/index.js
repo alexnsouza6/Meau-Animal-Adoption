@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-
+import { AsyncStorage, Text } from 'react-native';
+import firestore from '@react-native-firebase/firestore';
 import reactotron from 'reactotron-react-native';
-import { Text } from 'react-native';
 import ScreenHeader from '../../components/ScreenHeader';
 
 
@@ -13,15 +13,26 @@ import {
   CategoryDescription, AdoptButton, AdoptText,
 } from './style';
 
-const AnimalFeed = ({ navigation, userIsLogged }) => {
-  function onDonationPress() {
-    if (userIsLogged) { navigation.navigate('NotRegistered'); } else { navigation.navigate('Feed'); }
-  }
+const AnimalFeed = ({ navigation }) => {
   const {
     // eslint-disable-next-line react/prop-types
     age, visit, health, diseases, name, about, sex, temper, size, adoptionReq,
   // eslint-disable-next-line react/prop-types
-  } = navigation.state.params.pet;
+  } = navigation.state.params.pet.object;
+
+  async function onAdoptPress() {
+    const petId = navigation.state.params.pet.id;
+    const user = await AsyncStorage.getItem('user');
+    if (user) {
+      const pet = await firestore().collection('pets').doc(petId).get();
+      const { interested } = pet.data();
+      interested.push(user);
+      await firestore().collection('pets').doc(petId).update({ interested });
+      navigation.navigate('Feeds');
+    } else {
+      navigation.navigate('NotRegistered');
+    }
+  }
 
 
   function formatString(array) {
@@ -141,7 +152,7 @@ const AnimalFeed = ({ navigation, userIsLogged }) => {
             {about}
           </CategoryDescription>
         </AnimalInfo>
-        <AdoptButton onPress={onDonationPress}>
+        <AdoptButton onPress={onAdoptPress}>
           <AdoptText>Pretendo adotar</AdoptText>
         </AdoptButton>
       </InfoContainer>
@@ -153,7 +164,6 @@ AnimalFeed.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
   }).isRequired,
-  userIsLogged: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = (state) => ({

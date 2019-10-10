@@ -1,5 +1,9 @@
 import React from 'react';
-import { Text, Button, View } from 'react-native';
+import {
+  Text, Button, View,
+  AsyncStorage,
+} from 'react-native';
+
 import PropTypes from 'prop-types';
 import { LoginButton, AccessToken } from 'react-native-fbsdk';
 import Icon from 'react-native-vector-icons/Zocial';
@@ -27,7 +31,10 @@ export default class Login extends React.Component {
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)
-      .then(() => navigation.navigate('Main'))
+      .then(async () => {
+        await AsyncStorage.setItem('user', email);
+        navigation.navigate('Main');
+      })
       .catch((error) => this.setState({ errorMessage: error.message }));
   };
 

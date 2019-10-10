@@ -147,284 +147,279 @@ class PetFilter extends React.Component {
     const { navigation } = this.props;
     return (
       <>
-        <StatusBar backgroundColor="#f7a800" />
         <ScreenHeader title="Filtrar pesquisa" color="#ffd358" iconLeft="arrow-back" iconRight="" navigation={navigation} route="Feeds" />
-        <SafeAreaView>
-          <BodyContainer>
-            <ScrollContainer>
-              <SectionText>
+        <ScrollContainer>
+          <SectionText>
                SEU INTERESSE
-              </SectionText>
-              <TopButtonsContainer>
+          </SectionText>
+          <TopButtonsContainer>
 
-                <TopAdoptButton>
-                  <Text>ADOTAR</Text>
-                </TopAdoptButton>
+            <TopAdoptButton>
+              <Text>ADOTAR</Text>
+            </TopAdoptButton>
 
-                <TopButton>
-                  <TopButtonText>AJUDAR</TopButtonText>
-                </TopButton>
+            <TopButton>
+              <TopButtonText>AJUDAR</TopButtonText>
+            </TopButton>
 
-                <TopButton>
-                  <TopButtonText>APADRINHAR</TopButtonText>
-                </TopButton>
+            <TopButton>
+              <TopButtonText>APADRINHAR</TopButtonText>
+            </TopButton>
 
-              </TopButtonsContainer>
+          </TopButtonsContainer>
 
-              <SectionText>
+          <SectionText>
                 ESPÉCIE
-              </SectionText>
+          </SectionText>
 
-              <Row>
-                <Column>
-                  {specie[0]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { specie: this.handlePress(specie, 0) },
-                      )}
-                      >
-                        <Text>CACHORRO</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <LeftButton onPress={() => this.setState(
-                        { specie: this.handlePress(specie, 0) },
-                      )}
-                      >
-                        <Text>CACHORRO</Text>
-                      </LeftButton>
-                    )}
-                </Column>
-                <Column>
-                  {specie[1]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { specie: this.handlePress(specie, 1) },
-                      )}
-                      >
-                        <Text>GATO</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <RightButton onPress={() => this.setState(
-                        { specie: this.handlePress(specie, 1) },
-                      )}
-                      >
-                        <Text>GATO</Text>
-                      </RightButton>
-                    )}
-                </Column>
-              </Row>
+          <Row>
+            <Column>
+              {specie[0]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { specie: this.handlePress(specie, 0) },
+                  )}
+                  >
+                    <Text>CACHORRO</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <LeftButton onPress={() => this.setState(
+                    { specie: this.handlePress(specie, 0) },
+                  )}
+                  >
+                    <Text>CACHORRO</Text>
+                  </LeftButton>
+                )}
+            </Column>
+            <Column>
+              {specie[1]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { specie: this.handlePress(specie, 1) },
+                  )}
+                  >
+                    <Text>GATO</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <RightButton onPress={() => this.setState(
+                    { specie: this.handlePress(specie, 1) },
+                  )}
+                  >
+                    <Text>GATO</Text>
+                  </RightButton>
+                )}
+            </Column>
+          </Row>
 
-              <SectionText>
+          <SectionText>
                 SEXO
-              </SectionText>
+          </SectionText>
 
-              <Row>
-                <Column>
-                  {sex[0]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { sex: this.handlePress(sex, 0) },
-                      )}
-                      >
-                        <Text>MACHO</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <LeftButton onPress={() => this.setState(
-                        { sex: this.handlePress(sex, 0) },
-                      )}
-                      >
-                        <Text>MACHO</Text>
-                      </LeftButton>
-                    )}
-                </Column>
-                <Column>
-                  {sex[1]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { sex: this.handlePress(sex, 1) },
-                      )}
-                      >
-                        <Text>FÊMEA</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <RightButton onPress={() => this.setState(
-                        { sex: this.handlePress(sex, 1) },
-                      )}
-                      >
-                        <Text>FÊMEA</Text>
-                      </RightButton>
-                    )}
-                </Column>
-              </Row>
+          <Row>
+            <Column>
+              {sex[0]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { sex: this.handlePress(sex, 0) },
+                  )}
+                  >
+                    <Text>MACHO</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <LeftButton onPress={() => this.setState(
+                    { sex: this.handlePress(sex, 0) },
+                  )}
+                  >
+                    <Text>MACHO</Text>
+                  </LeftButton>
+                )}
+            </Column>
+            <Column>
+              {sex[1]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { sex: this.handlePress(sex, 1) },
+                  )}
+                  >
+                    <Text>FÊMEA</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <RightButton onPress={() => this.setState(
+                    { sex: this.handlePress(sex, 1) },
+                  )}
+                  >
+                    <Text>FÊMEA</Text>
+                  </RightButton>
+                )}
+            </Column>
+          </Row>
 
-              <SectionText>
+          <SectionText>
                 IDADE
-              </SectionText>
+          </SectionText>
 
-              <Row>
-                <Column>
-                  {age[0]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { age: this.handlePress(age, 0) },
-                      )}
-                      >
-                        <Text>FILHOTE</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <LeftButton onPress={() => this.setState(
-                        { age: this.handlePress(age, 0) },
-                      )}
-                      >
-                        <Text>FILHOTE</Text>
-                      </LeftButton>
-                    )}
-                </Column>
-                <Column>
-                  {age[1]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { age: this.handlePress(age, 1) },
-                      )}
-                      >
-                        <Text>ADULTO</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <CenterButton onPress={() => this.setState(
-                        { age: this.handlePress(age, 1) },
-                      )}
-                      >
-                        <Text>ADULTO</Text>
-                      </CenterButton>
-                    )}
-                </Column>
-                <Column>
-                  {age[2]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { age: this.handlePress(age, 2) },
-                      )}
-                      >
-                        <Text>IDOSO</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <RightButton onPress={() => this.setState(
-                        { age: this.handlePress(age, 2) },
-                      )}
-                      >
-                        <Text>IDOSO</Text>
-                      </RightButton>
-                    )}
-                </Column>
-              </Row>
+          <Row>
+            <Column>
+              {age[0]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { age: this.handlePress(age, 0) },
+                  )}
+                  >
+                    <Text>FILHOTE</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <LeftButton onPress={() => this.setState(
+                    { age: this.handlePress(age, 0) },
+                  )}
+                  >
+                    <Text>FILHOTE</Text>
+                  </LeftButton>
+                )}
+            </Column>
+            <Column>
+              {age[1]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { age: this.handlePress(age, 1) },
+                  )}
+                  >
+                    <Text>ADULTO</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <CenterButton onPress={() => this.setState(
+                    { age: this.handlePress(age, 1) },
+                  )}
+                  >
+                    <Text>ADULTO</Text>
+                  </CenterButton>
+                )}
+            </Column>
+            <Column>
+              {age[2]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { age: this.handlePress(age, 2) },
+                  )}
+                  >
+                    <Text>IDOSO</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <RightButton onPress={() => this.setState(
+                    { age: this.handlePress(age, 2) },
+                  )}
+                  >
+                    <Text>IDOSO</Text>
+                  </RightButton>
+                )}
+            </Column>
+          </Row>
 
-              <SectionText>
+          <SectionText>
                 PORTE
-              </SectionText>
+          </SectionText>
 
-              <Row>
-                <Column>
-                  {size[0]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { size: this.handlePress(size, 0) },
-                      )}
-                      >
-                        <Text>PEQUENO</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <LeftButton onPress={() => this.setState(
-                        { size: this.handlePress(size, 0) },
-                      )}
-                      >
-                        <Text>PEQUENO</Text>
-                      </LeftButton>
-                    )}
-                </Column>
-                <Column>
-                  {size[1]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { size: this.handlePress(size, 1) },
-                      )}
-                      >
-                        <Text>MÉDIO</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <CenterButton onPress={() => this.setState(
-                        { size: this.handlePress(size, 1) },
-                      )}
-                      >
-                        <Text>MÉDIO</Text>
-                      </CenterButton>
-                    )}
-                </Column>
-                <Column>
-                  {size[2]
-                    ? (
-                      <MarkedButton onPress={() => this.setState(
-                        { size: this.handlePress(size, 2) },
-                      )}
-                      >
-                        <Text>GRANDE</Text>
-                      </MarkedButton>
-                    )
-                    : (
-                      <RightButton onPress={() => this.setState(
-                        { size: this.handlePress(size, 2) },
-                      )}
-                      >
-                        <Text>GRANDE</Text>
-                      </RightButton>
-                    )}
-                </Column>
-              </Row>
+          <Row>
+            <Column>
+              {size[0]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { size: this.handlePress(size, 0) },
+                  )}
+                  >
+                    <Text>PEQUENO</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <LeftButton onPress={() => this.setState(
+                    { size: this.handlePress(size, 0) },
+                  )}
+                  >
+                    <Text>PEQUENO</Text>
+                  </LeftButton>
+                )}
+            </Column>
+            <Column>
+              {size[1]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { size: this.handlePress(size, 1) },
+                  )}
+                  >
+                    <Text>MÉDIO</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <CenterButton onPress={() => this.setState(
+                    { size: this.handlePress(size, 1) },
+                  )}
+                  >
+                    <Text>MÉDIO</Text>
+                  </CenterButton>
+                )}
+            </Column>
+            <Column>
+              {size[2]
+                ? (
+                  <MarkedButton onPress={() => this.setState(
+                    { size: this.handlePress(size, 2) },
+                  )}
+                  >
+                    <Text>GRANDE</Text>
+                  </MarkedButton>
+                )
+                : (
+                  <RightButton onPress={() => this.setState(
+                    { size: this.handlePress(size, 2) },
+                  )}
+                  >
+                    <Text>GRANDE</Text>
+                  </RightButton>
+                )}
+            </Column>
+          </Row>
 
-              <SectionText>
+          <SectionText>
                 LOCALIZAÇÃO
-              </SectionText>
+          </SectionText>
 
-              <TextInput
-                onChangeText={(cityState) => this.setState({ cityState })}
-                value={cityState}
-                placeholder="Estado"
-              />
+          <TextInput
+            onChangeText={(cityState) => this.setState({ cityState })}
+            value={cityState}
+            placeholder="Estado"
+          />
 
-              <TextInput
-                onChangeText={(city) => this.setState({ city })}
-                value={city}
-                placeholder="Cidade"
-              />
+          <TextInput
+            onChangeText={(city) => this.setState({ city })}
+            value={city}
+            placeholder="Cidade"
+          />
 
-              <SectionText>
+          <SectionText>
                 PESQUISA POR NOME
-              </SectionText>
+          </SectionText>
 
 
-              <TextInput
-                onChangeText={(nameSearch) => this.setState({ nameSearch })}
-                value={nameSearch}
-                placeholder="Nome do pet ou usuário"
-              />
+          <TextInput
+            onChangeText={(nameSearch) => this.setState({ nameSearch })}
+            value={nameSearch}
+            placeholder="Nome do pet ou usuário"
+          />
 
-              <SearchButtonContainer>
-                <SearchButton onPress={this.handleFilterSubmit}>
-                  <SearchButtonText>FAZER PESQUISA</SearchButtonText>
-                </SearchButton>
-              </SearchButtonContainer>
+          <SearchButtonContainer>
+            <SearchButton onPress={this.handleFilterSubmit}>
+              <SearchButtonText>FAZER PESQUISA</SearchButtonText>
+            </SearchButton>
+          </SearchButtonContainer>
 
-            </ScrollContainer>
-          </BodyContainer>
-        </SafeAreaView>
+        </ScrollContainer>
       </>
     );
   }

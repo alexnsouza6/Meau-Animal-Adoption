@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Text } from 'react-native';
+import { StatusBar, Text, AsyncStorage } from 'react-native';
 
 import {
   CheckBox,
@@ -51,6 +51,8 @@ class PetRegister extends React.Component {
       adoptionReq: [],
       diseases,
       about,
+      owner: '',
+      interested: [],
     };
 
     if (size[0]) {
@@ -136,9 +138,10 @@ class PetRegister extends React.Component {
     }
 
     const petObject = this.formatData();
-    reactotron.log(petObject);
 
     const petRef = firestore().collection('pets');
+    const userIsLogged = await AsyncStorage.getItem('user');
+    petObject.owner = userIsLogged;
     await petRef.add(petObject);
     navigation.navigate('SuccessPetRegister');
   }
