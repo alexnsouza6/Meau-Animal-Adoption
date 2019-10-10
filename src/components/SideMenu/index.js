@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { ScrollView } from 'react-native';
+import { ScrollView, AsyncStorage } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { NavigationActions } from 'react-navigation';
 import Icon from 'react-native-vector-icons/MaterialIcons';
@@ -17,6 +17,12 @@ class SideMenu extends Component {
     });
     const { navigation } = this.props;
     navigation.dispatch(navigateAction);
+  }
+
+  handleLogout = async () => {
+    AsyncStorage.removeItem('user').then(
+      this.navigateToScreen('Main'),
+    );
   }
 
   render() {
@@ -36,10 +42,10 @@ class SideMenu extends Component {
           </AvatarSection>
 
           <NavItemContainer>
-            <NavItem onPress={this.navigateToScreen('Profile')}>
+            <NavItem onPress={this.navigateToScreen('#')}>
               <NavItemText>Meu Perfil</NavItemText>
             </NavItem>
-            <NavItem onPress={this.navigateToScreen('#')}>
+            <NavItem onPress={this.navigateToScreen('MyPets')}>
               <NavItemText>Meus Pets</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
@@ -61,10 +67,10 @@ class SideMenu extends Component {
           </NavPetSection>
 
           <NavItemContainer>
-            <NavItem onPress={this.navigateToScreen('#')}>
+            <NavItem onPress={this.navigateToScreen('PetRegister')}>
               <NavItemText>Cadastrar um pet</NavItemText>
             </NavItem>
-            <NavItem onPress={this.navigateToScreen('Feed')}>
+            <NavItem onPress={this.navigateToScreen('Feeds')}>
               <NavItemText>Adotar um pet</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('#')}>
@@ -121,7 +127,7 @@ class SideMenu extends Component {
             </NavItem>
           </NavItemContainer>
 
-          <FooterContainer>
+          <FooterContainer onPress={this.handleLogout}>
             <FooterText>Sair</FooterText>
           </FooterContainer>
 
