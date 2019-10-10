@@ -61,11 +61,14 @@ class FinishProcess extends Component {
   }
 
   handleProcess = async () => {
-    const { selectedPet, selectedUser, navigation } = this.state;
+    const { selectedPet, selectedUser } = this.state;
+    const { navigation } = this.props;
     const petId = selectedPet;
     reactotron.log(selectedPet);
+    const pet = await firestore().collection('pets').doc(petId).get();
+    reactotron.log(pet);
+    navigation.navigate('SuccessAdoption', {});
     await firestore().collection('pets').doc(petId).update({ owner: selectedUser });
-    navigation.navigate('Main');
   }
 
   render() {

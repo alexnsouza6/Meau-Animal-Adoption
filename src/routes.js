@@ -16,6 +16,7 @@ import SuccessPetRegister from './components/SuccessPetRegister';
 import AnimalFeed from './containers/AnimalFeed';
 import FilterFailed from './components/FilterFailed';
 import MyPets from './containers/MyPets';
+import SuccessAdoption from './components/SuccessAdoption';
 
 const Routes = createAppContainer(createDrawerNavigator(
   {
@@ -33,6 +34,7 @@ const Routes = createAppContainer(createDrawerNavigator(
     FilterFailed,
     MyPets,
     FinishProcess,
+    SuccessAdoption,
   },
   {
     contentComponent: SideMenu,
