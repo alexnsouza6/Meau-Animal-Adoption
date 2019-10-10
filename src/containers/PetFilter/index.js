@@ -4,14 +4,18 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import PropTypes from 'prop-types';
 import firestore from '@react-native-firebase/firestore';
+
 import reactotron from 'reactotron-react-native';
 import {
   Column, Row, BodyContainer, SectionText, TopButtonsContainer, TopAdoptButton,
   TopButton, TopButtonText, LeftButton, RightButton, CenterButton, MarkedButton, SearchButtonText,
-  SearchButton, TextInput, SearchButtonContainer,
+  SearchButton, TextInput, SearchButtonContainer, ScrollContainer,
 } from './style';
-import { ScrollContainer } from '../PetRegister/style';
+
+import ScreenHeader from '../../components/ScreenHeader';
+
 
 class PetFilter extends React.Component {
   state = {
@@ -81,6 +85,7 @@ class PetFilter extends React.Component {
 
   handleFilterSubmit = () => {
     const petObject = this.formatData();
+    const { navigation } = this.props;
     this.getAllPets().then((petsCollection) => {
       let filteredPets = petsCollection;
       if (petObject.nameSearch) {
@@ -98,7 +103,9 @@ class PetFilter extends React.Component {
         petObject.age.forEach((element) => {
           aux = filteredPets;
           aux = aux.filter((e) => e.age === element);
-          filteredPetsAux = [...filteredPetsAux, aux];
+          aux.forEach((element) => {
+            filteredPetsAux = [...filteredPetsAux, element];
+          });
         });
         filteredPets = filteredPetsAux;
       }
@@ -108,11 +115,18 @@ class PetFilter extends React.Component {
         petObject.size.forEach((element) => {
           aux = filteredPets;
           aux = aux.filter((e) => e.size === element);
-          filteredPetsAux = [...filteredPetsAux, aux];
+          aux.forEach((element) => {
+            filteredPetsAux = [...filteredPetsAux, element];
+          });
         });
         filteredPets = filteredPetsAux;
       }
       reactotron.log(filteredPets);
+      if (filteredPets.length) {
+        navigation.navigate('Feeds', { filteredPets });
+      } else {
+        navigation.navigate('FilterFailed');
+      }
     });
   }
 
@@ -130,9 +144,11 @@ class PetFilter extends React.Component {
     const {
       specie, sex, age, size, cityState, city, nameSearch,
     } = this.state;
+    const { navigation } = this.props;
     return (
       <>
         <StatusBar backgroundColor="#f7a800" />
+        <ScreenHeader title="Filtrar pesquisa" color="#ffd358" iconLeft="arrow-back" iconRight="" navigation={navigation} route="Feeds" />
         <SafeAreaView>
           <BodyContainer>
             <ScrollContainer>
@@ -413,5 +429,11 @@ class PetFilter extends React.Component {
     );
   }
 }
+
+PetFilter.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default PetFilter;
