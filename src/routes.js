@@ -15,21 +15,23 @@ import PetFilter from './containers/PetFilter';
 import SuccessPetRegister from './components/SuccessPetRegister';
 import AnimalFeed from './containers/AnimalFeed';
 import FilterFailed from './components/FilterFailed';
+import MyPets from './containers/MyPets';
 
 const Routes = createAppContainer(createDrawerNavigator(
   {
     Loading,
-    SignUp,
-    Profile,
-    Login,
     Main,
+    Login,
+    SignUp,
     NotRegistered,
-    Feeds,
+    Profile,
     PetRegister,
-    PetFilter,
     SuccessPetRegister,
-    FilterFailed,
+    Feeds,
     AnimalFeed,
+    PetFilter,
+    FilterFailed,
+    MyPets,
     FinishProcess,
   },
   {

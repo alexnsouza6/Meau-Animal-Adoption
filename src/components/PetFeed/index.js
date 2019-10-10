@@ -8,13 +8,13 @@ import {
   FeedBody, FeedHeader, FeedImage, Info, AnimalName, AnimalInfo, AnimalAddress, Feed,
 } from './style';
 
-const PetFeed = ({ pet, navigation }) => {
+const PetFeed = ({ pet, route, navigation }) => {
   const {
     name, age, size, sex,
   } = pet.object;
 
   return (
-    <Feed onPress={() => navigation.navigate('AnimalFeed', { pet })}>
+    <Feed onPress={() => navigation.navigate('AnimalFeed', { pet, route })}>
       <FeedHeader>
         <AnimalName>
           {name}
@@ -51,6 +51,7 @@ PetFeed.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
   pet: PropTypes.func.isRequired,
+  route: PropTypes.func.isRequired,
 };
 
 export default withNavigation(PetFeed);

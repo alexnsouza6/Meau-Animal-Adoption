@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { AsyncStorage, Text } from 'react-native';
 import firestore from '@react-native-firebase/firestore';
-import reactotron from 'reactotron-react-native';
 import ScreenHeader from '../../components/ScreenHeader';
 
 
@@ -15,10 +14,9 @@ import {
 
 const AnimalFeed = ({ navigation }) => {
   const {
-    // eslint-disable-next-line react/prop-types
     age, visit, health, diseases, name, about, sex, temper, size, adoptionReq,
-  // eslint-disable-next-line react/prop-types
   } = navigation.state.params.pet.object;
+  const { route } = navigation.state.params;
 
   async function onAdoptPress() {
     const petId = navigation.state.params.pet.id;
@@ -47,7 +45,7 @@ const AnimalFeed = ({ navigation }) => {
 
   return (
     <>
-      <ScreenHeader title={name} color="#ffd358" iconLeft="arrow-back" iconRight="share" route="Feeds" navigation={navigation} />
+      <ScreenHeader title={name} color="#ffd358" iconLeft="arrow-back" iconRight="share" route={route} navigation={navigation} />
       <AnimalPhoto source={{ uri: 'https://firebasestorage.googleapis.com/v0/b/meau-app.appspot.com/o/-LdtxngUS2-V8UuEuipC?alt=media&token=fab66a80-df2b-442c-a579-f069ff2c3323' }} resizeMode="stretch" />
       <InfoContainer>
         <Title>{name}</Title>
@@ -163,6 +161,7 @@ const AnimalFeed = ({ navigation }) => {
 AnimalFeed.propTypes = {
   navigation: PropTypes.shape({
     navigate: PropTypes.func.isRequired,
+    state: PropTypes.func.isRequired,
   }).isRequired,
 };
 
