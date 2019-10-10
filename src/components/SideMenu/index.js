@@ -42,7 +42,7 @@ class SideMenu extends Component {
           </AvatarSection>
 
           <NavItemContainer>
-            <NavItem onPress={this.navigateToScreen('#')}>
+            <NavItem onPress={this.navigateToScreen('Profile')}>
               <NavItemText>Meu Perfil</NavItemText>
             </NavItem>
             <NavItem onPress={this.navigateToScreen('MyPets')}>

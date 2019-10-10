@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import PropTypes from 'prop-types';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, View } from 'react-native';
 
 import {
   Container, Title, Description,
@@ -12,9 +12,19 @@ import {
 const meauImage = require('../../assets/images/Meau_marca_2.png');
 
 const Main = ({ navigation }) => {
+
+  const [logged, setLogged] = useState(false);
+
+  useEffect(() => {
+    async function checkLogged() {
+      const userIsLogged = await AsyncStorage.getItem('user');
+      userIsLogged ? setLogged(true) : setLogged(false);
+    }
+    checkLogged();
+  }, []);
+
   async function checkLoggedUser() {
-    const userIsLogged = await AsyncStorage.getItem('user');
-    if (userIsLogged) { navigation.navigate('PetRegister'); } else { navigation.navigate('NotRegistered'); }
+    if (logged) { navigation.navigate('PetRegister'); } else { navigation.navigate('NotRegistered'); }
   }
 
   return (
@@ -37,8 +47,8 @@ const Main = ({ navigation }) => {
           </MenuText>
         </MenuButton>
       </Menu>
-      <LoginButton onPress={() => { navigation.navigate('Login'); }} />
-      <RegisterButton onPress={() => { navigation.navigate('SignUp'); }} />
+      {!logged ? <LoginButton onPress={() => { navigation.navigate('Login'); }} /> : <View />}
+      {!logged ? <RegisterButton onPress={() => { navigation.navigate('SignUp'); }} /> : <View />}
 
       <Logo source={meauImage} />
     </Container>

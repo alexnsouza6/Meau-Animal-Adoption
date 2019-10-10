@@ -1,5 +1,5 @@
 import React from 'react';
-import { StatusBar, Text, AsyncStorage } from 'react-native';
+import { Text, AsyncStorage } from 'react-native';
 
 import {
   CheckBox,
@@ -8,6 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import Icon from 'react-native-vector-icons/Feather';
 import firestore from '@react-native-firebase/firestore';
+import ScreenHeader from '../../components/ScreenHeader'
 
 import {
   Column, Row, BodyContainer, BaseText, ScrollContainer, AdoptButton,
@@ -15,8 +16,9 @@ import {
   CheckboxContainer, ImageButton, AdoptionBtn, ImageButtonStyle, VisitTimeContainer,
   CheckboxText, BtnContainer, PatronizeText, AdoptionButtonText, VisitTimeText,
 } from './style';
+import reactotron from 'reactotron-react-native';
 
-class PetRegister extends React.Component {
+export default class PetRegister extends React.Component {
   state = {
     specie: [true, false],
     sex: [true, false],
@@ -145,14 +147,21 @@ class PetRegister extends React.Component {
     navigation.navigate('SuccessPetRegister');
   }
 
+  getNavigation() {
+    reactotron.log(this.props);
+  }
+
   render() {
     const {
       temper, health, adoptionReq, visit, about,
       name, specie, sex, size, age, diseases,
     } = this.state;
+
+    const { navigation } = this.props;
+
     return (
       <>
-        <StatusBar backgroundColor="#f7a800" />
+        <ScreenHeader title="Cadastrar animal" color="#ffd358" iconLeft="arrow-back" iconRight="search" route="Main" navigation={navigation} />
         <BodyContainer>
           <ScrollContainer>
             <BaseText>
@@ -592,5 +601,3 @@ PetRegister.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
-
-export default PetRegister;
