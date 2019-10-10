@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import reactotron from 'reactotron-react-native';
 import firebase from '../../config/firebase';
+import '@react-native-firebase/auth';
 import { addProfile } from '../../actions/user/index';
 import ScreenHeader from '../../components/ScreenHeader';
 
@@ -31,15 +33,17 @@ class SignUp extends React.Component {
 
     const { email, password } = this.state;
 
+
     firebase
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then(() => {
+        reactotron.log(this.state);
         dispatch(addProfile(this.state));
         navigation.navigate('Main');
       })
       .catch((error) => {
-        console.log(error);
+        reactotron.log({ error });
       });
   }
 
