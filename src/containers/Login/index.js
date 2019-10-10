@@ -1,19 +1,16 @@
 import React from 'react';
 import {
-  Text, Button, View,
   AsyncStorage,
 } from 'react-native';
 
 import PropTypes from 'prop-types';
-import { LoginButton, AccessToken } from 'react-native-fbsdk';
+import { AccessToken, LoginManager } from 'react-native-fbsdk';
 import Icon from 'react-native-vector-icons/Zocial';
-
 
 import { GoogleSignin } from 'react-native-google-signin';
 import firebase from '../../config/firebase';
 import {
-  LoginContainer, ErrorText, UserNameInput,
-  PasswordInput, SignInButton, SignInText,
+  LoginContainer, ErrorText, SignInButton, SignInText, TxtInput, GoogleButton, GoogleText, FacebookButton
 } from './style';
 
 import '@react-native-firebase/auth';
@@ -24,6 +21,23 @@ export default class Login extends React.Component {
   state = {
     email: '', password: '', errorMessage: null, logged: false,
   };
+
+  handleFacebookLogin() {
+    LoginManager.logInWithPermissions(['public_profile', 'email', 'user_friends']).then(
+      function (result) {
+        if (!error && !result.isCancelled) {
+          AccessToken.getCurrentAccessToken().then(
+            () => {
+              navigation.navigate('Main');
+            },
+          );
+        }
+      },
+      function (error) {
+        console.log('Login fail with error: ' + error)
+      }
+    )
+  }
 
   handleLogin = () => {
     const { email, password } = this.state;
@@ -73,47 +87,32 @@ export default class Login extends React.Component {
         <ScreenHeader title="Login" color="#ffd358" iconRight="search" iconLeft="menu" navigation={navigation} />
         <LoginContainer>
           {errorMessage && <ErrorText>{errorMessage}</ErrorText>}
-          <UserNameInput
-            autoCapitalize="none"
-            placeholder="Email"
+          <TxtInput
             onChangeText={(email) => this.setState({ email })}
             value={email}
+            placeholder="Email"
           />
-          <PasswordInput
+          <TxtInput
             secureTextEntry
-            autoCapitalize="none"
-            placeholder="Password"
             onChangeText={(password) => this.setState({ password })}
             value={password}
+            placeholder="Password"
           />
 
           <SignInButton onPress={this.handleLogin}>
             <SignInText> Entrar </SignInText>
           </SignInButton>
-          <View>
-            <LoginButton
-              onLoginFinished={
-            (error, result) => {
-              if (!error && !result.isCancelled) {
-                AccessToken.getCurrentAccessToken().then(
-                  () => {
-                    navigation.navigate('Main');
-                  },
-                );
-              }
-            }
-          }
-            />
-          </View>
-          <Icon.Button name="googleplus" backgroundColor="#f15f5c" onPress={logged ? this.signOut : this.signIn}>
-            <Text>
-              {logged ? 'Logout Google' : 'Login Google'}
-            </Text>
-          </Icon.Button>
-          <Button
-            title="Don't have an account? Sign Up"
-            onPress={() => navigation.navigate('SignUp')}
-          />
+
+          <GoogleButton onPress={logged ? this.signOut : this.signIn} >
+            <Icon name="googleplus" color="#f7f7f7"/>
+            <GoogleText> ENTRAR COM GOOGLE </GoogleText>
+          </GoogleButton>
+
+          <FacebookButton onPress={logged ? this.signOut : this.handleFacebookLogin} >
+            <Icon name="facebook" color="#f7f7f7"/>
+            <GoogleText> ENTRAR COM FACEBOOK </GoogleText>
+          </FacebookButton>
+
         </LoginContainer>
       </>
     );
