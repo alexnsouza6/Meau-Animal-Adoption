@@ -1,6 +1,7 @@
-import React, { useEffect, useState} from 'react';
+import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { AsyncStorage, View } from 'react-native';
+import { connect } from 'react-redux';
+import { View, AsyncStorage } from 'react-native';
 
 import {
   Container, Title, Description,
@@ -11,49 +12,47 @@ import {
 
 const meauImage = require('../../assets/images/Meau_marca_2.png');
 
-const Main = ({ navigation }) => {
-
-  const [logged, setLogged] = useState(false);
-
-  useEffect(() => {
-    async function checkLogged() {
-      const userIsLogged = await AsyncStorage.getItem('user');
-      userIsLogged ? setLogged(true) : setLogged(false);
-    }
-    checkLogged();
-  }, []);
-
-  async function checkLoggedUser() {
-    if (logged) { navigation.navigate('PetRegister'); } else { navigation.navigate('NotRegistered'); }
+class Main extends Component {
+  state = {
+    user: {},
   }
 
-  return (
-    <Container>
-      <Title> Olá! </Title>
-      <DescriptionContainer>
-        <Description>Bem vindo ao Meau!</Description>
-        <Description>Aqui você pode adotar, doar e ajudar cães e gatos com facilidade.</Description>
-        <Description>Qual o seu interesse?</Description>
-      </DescriptionContainer>
-      <Menu>
-        <MenuButton onPress={() => { navigation.navigate('Feeds'); }}>
-          <MenuText>
-              ADOTAR
-          </MenuText>
-        </MenuButton>
-        <MenuButton onPress={() => { checkLoggedUser(); }}>
-          <MenuText>
-              CADASTRAR ANIMAL
-          </MenuText>
-        </MenuButton>
-      </Menu>
-      {!logged ? <LoginButton onPress={() => { navigation.navigate('Login'); }} /> : <View />}
-      {!logged ? <RegisterButton onPress={() => { navigation.navigate('SignUp'); }} /> : <View />}
+  async componentDidMount() {
+    const asyncUser = await AsyncStorage.getItem('user');
+    this.setState({ user: asyncUser });
+  }
 
-      <Logo source={meauImage} />
-    </Container>
-  );
-};
+  render() {
+    const { navigation } = this.props;
+    const { user } = this.state;
+    return (
+      <Container>
+        <Title> Olá! </Title>
+        <DescriptionContainer>
+          <Description>Bem vindo ao Meau!</Description>
+          <Description>Aqui você pode adotar, doar e ajudar cães e gatos com facilidade.</Description>
+          <Description>Qual o seu interesse?</Description>
+        </DescriptionContainer>
+        <Menu>
+          <MenuButton onPress={() => { navigation.navigate('Feeds'); }}>
+            <MenuText>
+                ADOTAR
+            </MenuText>
+          </MenuButton>
+          <MenuButton onPress={() => { checkLoggedUser(); }}>
+            <MenuText>
+                CADASTRAR ANIMAL
+            </MenuText>
+          </MenuButton>
+        </Menu>
+        {!user ? <LoginButton onPress={() => { navigation.navigate('Login'); }} /> : <View />}
+        {!user ? <RegisterButton onPress={() => { navigation.navigate('SignUp'); }} /> : <View />}
+
+        <Logo source={meauImage} />
+      </Container>
+    );
+  }
+}
 
 Main.propTypes = {
   navigation: PropTypes.shape({
@@ -61,4 +60,8 @@ Main.propTypes = {
   }).isRequired,
 };
 
-export default Main;
+const mapStateToProps = (state) => ({
+  userIsLogged: Object.entries(state.user).length !== 0,
+});
+
+export default connect(mapStateToProps)(Main);
