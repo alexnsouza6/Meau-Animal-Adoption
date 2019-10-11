@@ -39,7 +39,7 @@ class Main extends Component {
                 ADOTAR
             </MenuText>
           </MenuButton>
-          <MenuButton onPress={() => { checkLoggedUser(); }}>
+          <MenuButton onPress={() => { navigation.navigate('PetRegister'); }}>
             <MenuText>
                 CADASTRAR ANIMAL
             </MenuText>
